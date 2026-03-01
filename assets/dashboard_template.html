@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>US Market Hub | Analytics</title>
+    <title>Reddit Market Intelligence</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,86 +16,75 @@
             --negative: #ef4444;
             --text-main: #f1f5f9;
             --text-dim: #94a3b8;
+            --stocks: #6366f1;
+            --market: #10b981;
+            --tech: #f59e0b;
+            --economy: #ec4899;
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; }
         .dashboard-container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
         .glass-card { 
             background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); 
             border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
-            transition: transform 0.2s ease;
+            margin-bottom: 24px; transition: transform 0.2s;
         }
         .glass-card:hover { transform: translateY(-5px); }
+        .section-header { 
+            font-size: 0.9rem; font-weight: 700; text-transform: uppercase; 
+            letter-spacing: 2px; margin-bottom: 20px; display: flex; align-items: center;
+        }
+        .section-header::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-left: 15px; }
+        
+        .cat-stocks { color: var(--stocks); }
+        .cat-market { color: var(--market); }
+        .cat-tech { color: var(--tech); }
+        .cat-economy { color: var(--economy); }
+
         .card-title { font-size: 1.1rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 20px; }
-        .stat-pct { font-size: 0.85rem; padding: 2px 8px; border-radius: 6px; display: inline-block; min-width: 60px; text-align: center; }
-        .pct-up { background: rgba(16, 185, 129, 0.15); color: var(--positive); }
-        .pct-down { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
-        .reddit-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 0; }
-        .reddit-item:last-child { border-bottom: none; }
-        .reddit-tag { background: #ff4500; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 8px; vertical-align: middle; }
+        .news-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 0; }
+        .news-item:last-child { border-bottom: none; }
+        .reddit-tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 8px; color: white; }
+        .tag-stocks { background: var(--stocks); }
+        .tag-market { background: var(--market); }
+        .tag-tech { background: var(--tech); }
+        .tag-economy { background: var(--economy); }
+
         .timestamp { color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; }
-        .positive { color: var(--positive); }
-        .negative { color: var(--negative); }
-        a { text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--accent-blue) !important; }
-        .table-dark { --bs-table-bg: transparent; }
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        a:hover { color: var(--accent-blue); }
+        .score-info { font-size: 0.8rem; color: var(--text-dim); }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
         <header class="d-flex justify-content-between align-items-end mb-5">
             <div>
-                <h1 class="fw-bold mb-1">US Market <span style="color:var(--accent-blue)">Hub</span></h1>
-                <p class="text-dim mb-0">Real-time Intelligence & Social Sentiment</p>
+                <h1 class="fw-bold mb-1">Reddit <span style="color:var(--accent-blue)">Market Pulse</span></h1>
+                <p class="text-dim mb-0">Categorized Social Intelligence Hub</p>
             </div>
             <div class="text-end">
-                <div class="timestamp">LAST UPDATE</div>
+                <div class="timestamp">LAST SYNC</div>
                 <div class="fw-bold">{{ TIMESTAMP }}</div>
             </div>
         </header>
 
-        <!-- Charts Row -->
-        <div class="row g-4 mb-4">
+        <!-- MARKET SNAPSHOT (CHARTS) -->
+        <div class="row g-4 mb-5">
             <div class="col-lg-8">
-                <div class="glass-card p-4">
-                    <div class="card-title">📈 熱門股票表現 (Top 10 Active)</div>
+                <div class="glass-card p-4 h-100">
+                    <div class="card-title">Top Active Stocks Performance</div>
                     <div id="mainChart"></div>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="glass-card p-4">
-                    <div class="card-title">🔥 熱門股票排行</div>
-                    <div class="table-responsive">
-                        <table class="table table-dark table-borderless m-0 align-middle">
-                            <tbody>
-                                {% for stock in trending_stocks[:8] %}
-                                <tr>
-                                    <td><span class="fw-bold">{{ stock.symbol }}</span></td>
-                                    <td class="text-end">{{ stock.price }}</td>
-                                    <td class="text-end">
-                                        <span class="stat-pct {{ 'pct-up' if '+' in stock.percent_change else 'pct-down' }}">
-                                            {{ stock.percent_change }}
-                                        </span>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <!-- Market Indices Grid -->
-            <div class="col-lg-4">
                 <div class="glass-card p-4 h-100">
-                    <div class="card-title">🌍 全球主要指數</div>
+                    <div class="card-title">Indices Snapshot</div>
                     {% for index in indices[:8] %}
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="text-dim" style="font-size:0.9rem">{{ index.name }}</div>
                         <div class="text-end">
                             <div class="fw-bold">{{ index.price }}</div>
-                            <small class="{{ 'positive' if '+' in index.change else 'negative' }}" style="font-size:0.75rem">
+                            <small class="{{ 'positive' if '+' in index.change else 'negative' }}" style="font-size:0.75rem; color: {{ '#10b981' if '+' in index.change else '#ef4444' }}">
                                 {{ index.percent_change }}
                             </small>
                         </div>
@@ -103,61 +92,86 @@
                     {% endfor %}
                 </div>
             </div>
+        </div>
 
-            <!-- Reddit Intelligence -->
-            <div class="col-lg-8">
-                <div class="glass-card p-4 h-100">
-                    <div class="card-title">💬 Reddit 實時討論熱度</div>
-                    <div class="reddit-list">
-                        {% for post in reddit_trends[:8] %}
-                        <div class="reddit-item d-flex justify-content-between align-items-center">
-                            <div style="max-width: 80%;">
-                                <span class="reddit-tag">r/{{ post.subreddit }}</span>
-                                <a href="{{ post.url }}" target="_blank" class="text-white fw-medium">{{ post.title }}</a>
-                            </div>
-                            <div class="text-end text-dim" style="font-size: 0.8rem;">
-                                🚀 {{ post.score }} <br> 💬 {{ post.num_comments }}
-                            </div>
-                        </div>
-                        {% endfor %}
+        <!-- REDDIT CATEGORIES -->
+        <div class="row g-4">
+            <!-- STOCKS -->
+            <div class="col-lg-6">
+                <div class="section-header cat-stocks">📈 Stocks Analysis</div>
+                <div class="glass-card p-4">
+                    {% for post in reddit_categorized.stocks %}
+                    <div class="news-item">
+                        <span class="reddit-tag tag-stocks">r/{{ post.subreddit }}</span>
+                        <a href="{{ post.url }}" target="_blank" class="fw-medium">{{ post.title }}</a>
+                        <div class="score-info mt-1">🚀 {{ post.score }} • 💬 {{ post.num_comments }}</div>
                     </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- MARKET -->
+            <div class="col-lg-6">
+                <div class="section-header cat-market">⚖️ Market Sentiment</div>
+                <div class="glass-card p-4">
+                    {% for post in reddit_categorized.market %}
+                    <div class="news-item">
+                        <span class="reddit-tag tag-market">r/{{ post.subreddit }}</span>
+                        <a href="{{ post.url }}" target="_blank" class="fw-medium">{{ post.title }}</a>
+                        <div class="score-info mt-1">🚀 {{ post.score }} • 💬 {{ post.num_comments }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- TECH -->
+            <div class="col-lg-6">
+                <div class="section-header cat-tech">💻 Tech & Innovation</div>
+                <div class="glass-card p-4">
+                    {% for post in reddit_categorized.tech %}
+                    <div class="news-item">
+                        <span class="reddit-tag tag-tech">r/{{ post.subreddit }}</span>
+                        <a href="{{ post.url }}" target="_blank" class="fw-medium">{{ post.title }}</a>
+                        <div class="score-info mt-1">🚀 {{ post.score }} • 💬 {{ post.num_comments }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- ECONOMY -->
+            <div class="col-lg-6">
+                <div class="section-header cat-economy">🏛️ Global Economy</div>
+                <div class="glass-card p-4">
+                    {% for post in reddit_categorized.economy %}
+                    <div class="news-item">
+                        <span class="reddit-tag tag-economy">r/{{ post.subreddit }}</span>
+                        <a href="{{ post.url }}" target="_blank" class="fw-medium">{{ post.title }}</a>
+                        <div class="score-info mt-1">🚀 {{ post.score }} • 💬 {{ post.num_comments }}</div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Data for Chart
-        const labels = [{% for stock in trending_stocks[:10] %}"{{ stock.symbol }}",{% endfor %}];
-        const rawData = [{% for stock in trending_stocks[:10] %}"{{ stock.percent_change }}",{% endfor %}];
+        const labels = [{% for stock in trending_stocks[:12] %}"{{ stock.symbol }}",{% endfor %}];
+        const rawData = [{% for stock in trending_stocks[:12] %}"{{ stock.percent_change }}",{% endfor %}];
         const data = rawData.map(val => parseFloat(val.replace('%', '')) || 0);
 
         var options = {
-            series: [{ name: '漲跌幅 (%)', data: data }],
-            chart: { 
-                type: 'bar', 
-                height: 350, 
-                toolbar: { show: false }, 
-                background: 'transparent',
-                foreColor: '#94a3b8'
-            },
+            series: [{ name: 'Change %', data: data }],
+            chart: { type: 'bar', height: 350, toolbar: { show: false }, background: 'transparent', foreColor: '#94a3b8' },
             colors: [function({ value }) { return value > 0 ? '#10b981' : '#ef4444' }],
             plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '60%' } },
             dataLabels: { enabled: false },
-            xaxis: { 
-                categories: labels, 
-                axisBorder: { show: false },
-                axisTicks: { show: false }
-            },
-            yaxis: {
-                labels: { formatter: (val) => val.toFixed(1) + '%' }
-            },
+            xaxis: { categories: labels, axisBorder: { show: false }, axisTicks: { show: false } },
+            yaxis: { labels: { formatter: (val) => val.toFixed(1) + '%' } },
             grid: { borderColor: 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
             tooltip: { theme: 'dark' }
         };
 
-        var chart = new ApexCharts(document.querySelector("#mainChart"), options);
-        chart.render();
+        new ApexCharts(document.querySelector("#mainChart"), options).render();
     </script>
 </body>
 </html>

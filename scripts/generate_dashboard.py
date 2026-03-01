@@ -31,7 +31,7 @@ def generate_dashboard(data_path, template_path, output_path):
         "TIMESTAMP": ts,
         "indices": data.get("indices", []),
         "trending_stocks": data.get("trending_stocks", []),
-        "reddit_trends": data.get("reddit_trends", [])
+        "reddit_categorized": data.get("reddit_categorized", {})
     }
 
     try:

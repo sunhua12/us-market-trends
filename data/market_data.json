@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-03-01T21:12:17.734990",
+    "timestamp": "2026-03-01T21:26:46.637333",
     "indices": [
         {
             "name": "S&P 500",
@@ -199,111 +199,182 @@
             "percent_change": "+2.36%"
         }
     ],
-    "reddit_trends": [
-        {
-            "subreddit": "wallstreetbets",
-            "title": "We’re so back",
-            "score": 51296,
-            "num_comments": 573,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "Red light therapy is key. Practice for Monday.",
-            "score": 8697,
-            "num_comments": 270,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "U.S.-Israel launch massive attack on Iran; 4 U.S. military bases hit in retaliation",
-            "score": 4557,
-            "num_comments": 756,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh3wp3/usisrael_launch_massive_attack_on_iran_4_us/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says",
-            "score": 3763,
-            "num_comments": 351,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6hgh/irans_revolutionary_guards_tell_ships_passage/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?",
-            "score": 2650,
-            "num_comments": 1238,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/"
-        },
-        {
-            "subreddit": "stocks",
-            "title": "‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran",
-            "score": 2018,
-            "num_comments": 452,
-            "url": "https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/"
-        },
-        {
-            "subreddit": "investing",
-            "title": "We Are In Black Swan Territory",
-            "score": 1794,
-            "num_comments": 366,
-            "url": "https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "I'm toast bois. Gonna sell all my shit and Walk The Earth",
-            "score": 1122,
-            "num_comments": 320,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "New WallStreetBets Casually Explained Just Dropped",
-            "score": 719,
-            "num_comments": 87,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhhylw/new_wallstreetbets_casually_explained_just_dropped/"
-        },
-        {
-            "subreddit": "investing",
-            "title": "Iran Tensions Send Oil Soaring, Fed Rate Cuts Now Seem Unlikely",
-            "score": 694,
-            "num_comments": 103,
-            "url": "https://www.reddit.com/r/investing/comments/1rhnsg1/iran_tensions_send_oil_soaring_fed_rate_cuts_now/"
-        },
-        {
-            "subreddit": "stocks",
-            "title": "Berkshire Hathaway releases Q4 earnings. Operating earnings down 30%",
-            "score": 575,
-            "num_comments": 73,
-            "url": "https://www.reddit.com/r/stocks/comments/1rh42w4/berkshire_hathaway_releases_q4_earnings_operating/"
-        },
-        {
-            "subreddit": "investing",
-            "title": "Why is investing such a mystery to most people?",
-            "score": 544,
-            "num_comments": 280,
-            "url": "https://www.reddit.com/r/investing/comments/1rh50b4/why_is_investing_such_a_mystery_to_most_people/"
-        },
-        {
-            "subreddit": "wallstreetbets",
-            "title": "Modi inaugurates Micron facility; hails India’s entry into global semiconductor chain",
-            "score": 286,
-            "num_comments": 29,
-            "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhqh8r/modi_inaugurates_micron_facility_hails_indias/"
-        },
-        {
-            "subreddit": "stocks",
-            "title": "Market moves due to attacks on Iran?",
-            "score": 242,
-            "num_comments": 338,
-            "url": "https://www.reddit.com/r/stocks/comments/1rhd3ej/market_moves_due_to_attacks_on_iran/"
-        },
-        {
-            "subreddit": "investing",
-            "title": "What market moves to expect come Monday due to Iran?",
-            "score": 117,
-            "num_comments": 165,
-            "url": "https://www.reddit.com/r/investing/comments/1rhka06/what_market_moves_to_expect_come_monday_due_to/"
-        }
-    ]
+    "reddit_categorized": {
+        "stocks": [
+            {
+                "subreddit": "stocks",
+                "title": "‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran",
+                "score": 2023,
+                "num_comments": 452,
+                "url": "https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/"
+            },
+            {
+                "subreddit": "stocks",
+                "title": "Berkshire Hathaway releases Q4 earnings. Operating earnings down 30%",
+                "score": 585,
+                "num_comments": 73,
+                "url": "https://www.reddit.com/r/stocks/comments/1rh42w4/berkshire_hathaway_releases_q4_earnings_operating/"
+            },
+            {
+                "subreddit": "stocks",
+                "title": "Market moves due to attacks on Iran?",
+                "score": 240,
+                "num_comments": 338,
+                "url": "https://www.reddit.com/r/stocks/comments/1rhd3ej/market_moves_due_to_attacks_on_iran/"
+            },
+            {
+                "subreddit": "stocks",
+                "title": "$100 oil? Prolonged Hormuz closure could spark a 1970s-style energy shock",
+                "score": 121,
+                "num_comments": 44,
+                "url": "https://www.reddit.com/r/stocks/comments/1rhv6dt/100_oil_prolonged_hormuz_closure_could_spark_a/"
+            },
+            {
+                "subreddit": "pennystocks",
+                "title": "RIME: The $9M Reverse Split Dumpster Fire - A DD on How to Torch Shareholder Value in 12 Easy Steps",
+                "score": 80,
+                "num_comments": 19,
+                "url": "https://www.reddit.com/r/pennystocks/comments/1rgbm20/rime_the_9m_reverse_split_dumpster_fire_a_dd_on/"
+            },
+            {
+                "subreddit": "stocks",
+                "title": "Modi inaugurates Micron facility; hails India’s entry into global semiconductor chain",
+                "score": 48,
+                "num_comments": 12,
+                "url": "https://www.reddit.com/r/stocks/comments/1rhqi0e/modi_inaugurates_micron_facility_hails_indias/"
+            }
+        ],
+        "market": [
+            {
+                "subreddit": "wallstreetbets",
+                "title": "We’re so back",
+                "score": 51423,
+                "num_comments": 575,
+                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/"
+            },
+            {
+                "subreddit": "wallstreetbets",
+                "title": "Red light therapy is key. Practice for Monday.",
+                "score": 8844,
+                "num_comments": 272,
+                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/"
+            },
+            {
+                "subreddit": "wallstreetbets",
+                "title": "Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says",
+                "score": 3776,
+                "num_comments": 352,
+                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6hgh/irans_revolutionary_guards_tell_ships_passage/"
+            },
+            {
+                "subreddit": "wallstreetbets",
+                "title": "Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?",
+                "score": 2678,
+                "num_comments": 1246,
+                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/"
+            },
+            {
+                "subreddit": "investing",
+                "title": "We Are In Black Swan Territory",
+                "score": 1800,
+                "num_comments": 366,
+                "url": "https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/"
+            },
+            {
+                "subreddit": "wallstreetbets",
+                "title": "I'm toast bois. Gonna sell all my shit and Walk The Earth",
+                "score": 1166,
+                "num_comments": 325,
+                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/"
+            }
+        ],
+        "tech": [
+            {
+                "subreddit": "technology",
+                "title": "\"Cancel ChatGPT\" movement goes big after OpenAI's latest move",
+                "score": 65117,
+                "num_comments": 2196,
+                "url": "https://www.reddit.com/r/technology/comments/1rh882s/cancel_chatgpt_movement_goes_big_after_openais/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "Claude hits No. 1 on App Store as ChatGPT users defect in show of support for Anthropic's Pentagon stance",
+                "score": 20626,
+                "num_comments": 758,
+                "url": "https://www.reddit.com/r/technology/comments/1rhoi54/claude_hits_no_1_on_app_store_as_chatgpt_users/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "Anthropic's Claude hits No. 2 on Apple's top free apps list after Pentagon rejection",
+                "score": 19491,
+                "num_comments": 508,
+                "url": "https://www.reddit.com/r/technology/comments/1rhawy0/anthropics_claude_hits_no_2_on_apples_top_free/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "YouTube Shorts and Instagram Reels are making you dumber, according to science",
+                "score": 17296,
+                "num_comments": 719,
+                "url": "https://www.reddit.com/r/technology/comments/1rh17h9/youtube_shorts_and_instagram_reels_are_making_you/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "Polymarket defends its decision to allow betting on war as ‘invaluable’ / Everything is gambling now, even human suffering.",
+                "score": 4565,
+                "num_comments": 227,
+                "url": "https://www.reddit.com/r/technology/comments/1rhdn1m/polymarket_defends_its_decision_to_allow_betting/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "Lawmakers Demand DHS Define ‘Domestic Terrorist’ As It Uses Vast Array of Surveillance Tools | Rep. Bennie G. Thompson and other Democrats made the demand in a letter to DHS Kristi Noem. “Your actions are abhorrent, blatantly unconstitutional, and corrosive to the functioning of a peaceful society.”",
+                "score": 1831,
+                "num_comments": 33,
+                "url": "https://www.reddit.com/r/technology/comments/1rhlk6v/lawmakers_demand_dhs_define_domestic_terrorist_as/"
+            }
+        ],
+        "economy": [
+            {
+                "subreddit": "economics",
+                "title": "'Doomsday' report leaves experts rattled about increasing likelihood of US economy shake-up: 'The system wasn't designed for a crisis like this'",
+                "score": 3214,
+                "num_comments": 291,
+                "url": "https://www.reddit.com/r/Economics/comments/1rhej72/doomsday_report_leaves_experts_rattled_about/"
+            },
+            {
+                "subreddit": "economy",
+                "title": "A Reminder",
+                "score": 1253,
+                "num_comments": 11,
+                "url": "https://www.reddit.com/r/economy/comments/1rhl0wz/a_reminder/"
+            },
+            {
+                "subreddit": "economics",
+                "title": "Oil shipments paused as Iran closes Strait of Hormuz in response to US strikes",
+                "score": 732,
+                "num_comments": 148,
+                "url": "https://www.reddit.com/r/Economics/comments/1rhca8m/oil_shipments_paused_as_iran_closes_strait_of/"
+            },
+            {
+                "subreddit": "economy",
+                "title": "More people are moving out of the U.S. than moving in for the first time since the Great Depression—a bad omen for the $38.8 trillion national debt | In just one year, the Trump administration’s highly visible crusade against immigration has brought new entries into the U.S. to a grinding halt.",
+                "score": 331,
+                "num_comments": 51,
+                "url": "https://www.reddit.com/r/economy/comments/1rhgi6r/more_people_are_moving_out_of_the_us_than_moving/"
+            },
+            {
+                "subreddit": "economics",
+                "title": "How the attack on Iran could impact the global oil market and economy",
+                "score": 270,
+                "num_comments": 68,
+                "url": "https://www.reddit.com/r/Economics/comments/1rhh4va/how_the_attack_on_iran_could_impact_the_global/"
+            },
+            {
+                "subreddit": "economy",
+                "title": "Americans Who Can’t Afford Beef ‘Have So Many Proteins to Choose From,’ Says US Sen. Cindy Hyde-Smith",
+                "score": 219,
+                "num_comments": 87,
+                "url": "https://www.reddit.com/r/economy/comments/1rhgzpz/americans_who_cant_afford_beef_have_so_many/"
+            }
+        ]
+    }
 }

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Market Hub | Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-blue: #38bdf8;
+            --positive: #10b981;
+            --negative: #ef4444;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; }
+        .dashboard-container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .glass-card { 
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); }
+        .card-title { font-size: 1.1rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 20px; }
+        .stat-pct { font-size: 0.85rem; padding: 2px 8px; border-radius: 6px; display: inline-block; min-width: 60px; text-align: center; }
+        .pct-up { background: rgba(16, 185, 129, 0.15); color: var(--positive); }
+        .pct-down { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+        .reddit-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 0; }
+        .reddit-item:last-child { border-bottom: none; }
+        .reddit-tag { background: #ff4500; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 8px; vertical-align: middle; }
+        .timestamp { color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; }
+        .positive { color: var(--positive); }
+        .negative { color: var(--negative); }
+        a { text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent-blue) !important; }
+        .table-dark { --bs-table-bg: transparent; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="d-flex justify-content-between align-items-end mb-5">
+            <div>
+                <h1 class="fw-bold mb-1">US Market <span style="color:var(--accent-blue)">Hub</span></h1>
+                <p class="text-dim mb-0">Real-time Intelligence & Social Sentiment</p>
+            </div>
+            <div class="text-end">
+                <div class="timestamp">LAST UPDATE</div>
+                <div class="fw-bold">2026-03-01 21:12:17</div>
+            </div>
+        </header>
+
+        <!-- Charts Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+                <div class="glass-card p-4">
+                    <div class="card-title">📈 熱門股票表現 (Top 10 Active)</div>
+                    <div id="mainChart"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="glass-card p-4">
+                    <div class="card-title">🔥 熱門股票排行</div>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-borderless m-0 align-middle">
+                            <tbody>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">NVDA</span></td>
+                                    <td class="text-end">177.19</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-down">
+                                            -4.16%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">NFLX</span></td>
+                                    <td class="text-end">96.24</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-up">
+                                            +13.75%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">SOFI</span></td>
+                                    <td class="text-end">17.76</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-down">
+                                            -7.02%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">PLUG</span></td>
+                                    <td class="text-end">1.79</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-down">
+                                            -6.28%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">NU</span></td>
+                                    <td class="text-end">14.98</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-down">
+                                            -0.53%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">MARA</span></td>
+                                    <td class="text-end">8.94</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-up">
+                                            +5.80%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">AAL</span></td>
+                                    <td class="text-end">13.07</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-down">
+                                            -6.24%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><span class="fw-bold">PSKY</span></td>
+                                    <td class="text-end">13.51</td>
+                                    <td class="text-end">
+                                        <span class="stat-pct pct-up">
+                                            +20.84%
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Market Indices Grid -->
+            <div class="col-lg-4">
+                <div class="glass-card p-4 h-100">
+                    <div class="card-title">🌍 全球主要指數</div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">S&P 500</div>
+                        <div class="text-end">
+                            <div class="fw-bold">6,878.88</div>
+                            <small class="negative" style="font-size:0.75rem">
+                                -0.43%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">Dow Jones Industrial Average</div>
+                        <div class="text-end">
+                            <div class="fw-bold">48,977.92</div>
+                            <small class="negative" style="font-size:0.75rem">
+                                -1.05%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">NASDAQ Composite</div>
+                        <div class="text-end">
+                            <div class="fw-bold">22,668.21</div>
+                            <small class="negative" style="font-size:0.75rem">
+                                -0.92%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">NYSE Composite Index</div>
+                        <div class="text-end">
+                            <div class="fw-bold">23,494.44</div>
+                            <small class="negative" style="font-size:0.75rem">
+                                -0.13%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">NYSE American Composite Index</div>
+                        <div class="text-end">
+                            <div class="fw-bold">8,761.14</div>
+                            <small class="positive" style="font-size:0.75rem">
+                                +0.52%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">Cboe UK 100</div>
+                        <div class="text-end">
+                            <div class="fw-bold">1,086.35</div>
+                            <small class="positive" style="font-size:0.75rem">
+                                +0.54%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">Russell 2000 Index</div>
+                        <div class="text-end">
+                            <div class="fw-bold">2,632.36</div>
+                            <small class="negative" style="font-size:0.75rem">
+                                -1.68%
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="text-dim" style="font-size:0.9rem">CBOE Volatility Index</div>
+                        <div class="text-end">
+                            <div class="fw-bold">19.86</div>
+                            <small class="positive" style="font-size:0.75rem">
+                                +6.60%
+                            </small>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Reddit Intelligence -->
+            <div class="col-lg-8">
+                <div class="glass-card p-4 h-100">
+                    <div class="card-title">💬 Reddit 實時討論熱度</div>
+                    <div class="reddit-list">
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/" target="_blank" class="text-white fw-medium">We’re so back</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 51296 <br> 💬 573
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/" target="_blank" class="text-white fw-medium">Red light therapy is key. Practice for Monday.</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 8697 <br> 💬 270
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh3wp3/usisrael_launch_massive_attack_on_iran_4_us/" target="_blank" class="text-white fw-medium">U.S.-Israel launch massive attack on Iran; 4 U.S. military bases hit in retaliation</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 4557 <br> 💬 756
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh6hgh/irans_revolutionary_guards_tell_ships_passage/" target="_blank" class="text-white fw-medium">Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 3763 <br> 💬 351
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/" target="_blank" class="text-white fw-medium">Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 2650 <br> 💬 1238
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/stocks</span>
+                                <a href="https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/" target="_blank" class="text-white fw-medium">‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 2018 <br> 💬 452
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/investing</span>
+                                <a href="https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/" target="_blank" class="text-white fw-medium">We Are In Black Swan Territory</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 1794 <br> 💬 366
+                            </div>
+                        </div>
+                        
+                        <div class="reddit-item d-flex justify-content-between align-items-center">
+                            <div style="max-width: 80%;">
+                                <span class="reddit-tag">r/wallstreetbets</span>
+                                <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/" target="_blank" class="text-white fw-medium">I'm toast bois. Gonna sell all my shit and Walk The Earth</a>
+                            </div>
+                            <div class="text-end text-dim" style="font-size: 0.8rem;">
+                                🚀 1122 <br> 💬 320
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for Chart
+        const labels = ["NVDA","NFLX","SOFI","PLUG","NU","MARA","AAL","PSKY","ONDS","F",];
+        const rawData = ["-4.16%","+13.75%","-7.02%","-6.28%","-0.53%","+5.80%","-6.24%","+20.84%","-3.54%","-2.22%",];
+        const data = rawData.map(val => parseFloat(val.replace('%', '')) || 0);
+
+        var options = {
+            series: [{ name: '漲跌幅 (%)', data: data }],
+            chart: { 
+                type: 'bar', 
+                height: 350, 
+                toolbar: { show: false }, 
+                background: 'transparent',
+                foreColor: '#94a3b8'
+            },
+            colors: [function({ value }) { return value > 0 ? '#10b981' : '#ef4444' }],
+            plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '60%' } },
+            dataLabels: { enabled: false },
+            xaxis: { 
+                categories: labels, 
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+            yaxis: {
+                labels: { formatter: (val) => val.toFixed(1) + '%' }
+            },
+            grid: { borderColor: 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
+            tooltip: { theme: 'dark' }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#mainChart"), options);
+        chart.render();
+    </script>
+</body>
+</html>

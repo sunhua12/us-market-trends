@@ -39,7 +39,7 @@ def fetch_market_data(url, is_stock=False):
                 results.append({"symbol": cols[0], "name": cols[1], "price": price, "change": change, "percent_change": percent})
             else:
                 results.append({"name": cols[1], "price": price, "change": change, "percent_change": percent})
-        return results[:15]
+        return results
     except Exception as e:
         logger.error(f"Error fetching {url}: {e}")
         return []
@@ -48,7 +48,7 @@ def fetch_reddit_category(subreddits):
     trends = []
     headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
     for sub in subreddits:
-        url = f"https://www.reddit.com/r/{sub}/hot.json?limit=8"
+        url = f"https://www.reddit.com/r/{sub}/hot.json?limit=6"
         try:
             response = httpx.get(url, headers=headers, timeout=10.0)
             if response.status_code == 200:
@@ -65,21 +65,27 @@ def fetch_reddit_category(subreddits):
                         })
         except Exception as e:
             logger.error(f"Error fetching r/{sub}: {e}")
-    return sorted(trends, key=lambda x: x['score'], reverse=True)[:6]
+    return sorted(trends, key=lambda x: x['score'], reverse=True)[:5]
 
 def main():
-    # 定義分類版塊
     reddit_map = {
         "stocks": ["stocks", "pennystocks"],
         "market": ["investing", "wallstreetbets"],
         "tech": ["technology", "nvidia", "artificial"],
-        "economy": ["economy", "economics"]
+        "economy": ["economy", "economics"],
+        "crypto": ["CryptoCurrency", "Bitcoin", "Ethereum"],
+        "ai": ["Singularity", "OpenAI", "ChatGPT"],
+        "finance": ["personalfinance", "FIRE", "financialindependence"],
+        "dividends": ["dividends", "yieldmax"],
+        "options": ["options", "Daytrading", "thetagang"]
     }
 
     data = {
         "timestamp": datetime.now().isoformat(),
         "indices": fetch_market_data("https://finance.yahoo.com/markets/world-indices/"),
         "trending_stocks": fetch_market_data("https://finance.yahoo.com/markets/stocks/most-active/", is_stock=True),
+        "commodities": fetch_market_data("https://finance.yahoo.com/markets/commodities/"),
+        "cryptos": fetch_market_data("https://finance.yahoo.com/markets/crypto/all/", is_stock=True),
         "reddit_categorized": {cat: fetch_reddit_category(subs) for cat, subs in reddit_map.items()}
     }
     

@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-03-01T21:26:46.637333",
+    "timestamp": "2026-03-01T21:48:26.286215",
     "indices": [
         {
             "name": "S&P 500",
@@ -90,6 +90,162 @@
             "price": "85.20",
             "change": "-0.11",
             "percent_change": "-0.13%"
+        },
+        {
+            "name": "HANG SENG INDEX",
+            "price": "26,630.54",
+            "change": "+249.52",
+            "percent_change": "+0.95%"
+        },
+        {
+            "name": "STI Index",
+            "price": "4,995.07",
+            "change": "+30.69",
+            "percent_change": "+0.62%"
+        },
+        {
+            "name": "S&P/ASX 200",
+            "price": "9,198.60",
+            "change": "+23.30",
+            "percent_change": "+0.25%"
+        },
+        {
+            "name": "ALL ORDINARIES",
+            "price": "9,435.60",
+            "change": "+26.90",
+            "percent_change": "+0.29%"
+        },
+        {
+            "name": "S&P BSE SENSEX",
+            "price": "81,287.19",
+            "change": "-961.42",
+            "percent_change": "-1.17%"
+        },
+        {
+            "name": "IDX COMPOSITE",
+            "price": "8,235.49",
+            "change": "+0.22",
+            "percent_change": "+0.00%"
+        },
+        {
+            "name": "FTSE Bursa Malaysia KLCI",
+            "price": "1,716.61",
+            "change": "-24.33",
+            "percent_change": "-1.40%"
+        },
+        {
+            "name": "S&P/NZX 50 INDEX GROSS ( GROSS",
+            "price": "13,722.97",
+            "change": "+52.26",
+            "percent_change": "+0.38%"
+        },
+        {
+            "name": "KOSPI Composite Index",
+            "price": "6,244.13",
+            "change": "-63.14",
+            "percent_change": "-1.00%"
+        },
+        {
+            "name": "TWSE Capitalization Weighted Stock Index",
+            "price": "35,414.49",
+            "change": "+1.42",
+            "percent_change": "+0.00%"
+        },
+        {
+            "name": "S&P/TSX Composite index",
+            "price": "34,339.99",
+            "change": "-161.97",
+            "percent_change": "-0.47%"
+        },
+        {
+            "name": "IBOVESPA",
+            "price": "188,786.98",
+            "change": "-2,218.03",
+            "percent_change": "-1.16%"
+        },
+        {
+            "name": "IPC MEXICO",
+            "price": "71,405.77",
+            "change": "+15.67",
+            "percent_change": "+0.02%"
+        },
+        {
+            "name": "S&P IPSA",
+            "price": "10,877.74",
+            "change": "-171.95",
+            "percent_change": "-1.56%"
+        },
+        {
+            "name": "MERVAL",
+            "price": "2,642,105.50",
+            "change": "-112,314.00",
+            "percent_change": "-4.08%"
+        },
+        {
+            "name": "TA-125",
+            "price": "4,074.84",
+            "change": "+20.60",
+            "percent_change": "+0.51%"
+        },
+        {
+            "name": "EGX 30 Price Return Index",
+            "price": "47,984.30",
+            "change": "-1,030.00",
+            "percent_change": "-2.10%"
+        },
+        {
+            "name": "Top 40 USD Net TRI Index",
+            "price": "8,123.83",
+            "change": "+139.98",
+            "percent_change": "+1.75%"
+        },
+        {
+            "name": "US Dollar Index",
+            "price": "97.65",
+            "change": "+0.04",
+            "percent_change": "+0.04%"
+        },
+        {
+            "name": "MSCI EUROPE",
+            "price": "2,845.88",
+            "change": "+5.83",
+            "percent_change": "+0.21%"
+        },
+        {
+            "name": "British Pound Currency Index",
+            "price": "134.87",
+            "change": "+0.03",
+            "percent_change": "+0.02%"
+        },
+        {
+            "name": "Euro Currency Index",
+            "price": "118.06",
+            "change": "+0.08",
+            "percent_change": "+0.07%"
+        },
+        {
+            "name": "SSE Composite Index",
+            "price": "4,162.88",
+            "change": "+16.25",
+            "percent_change": "+0.39%"
+        },
+        {
+            "name": "Nikkei 225",
+            "price": "58,850.27",
+            "change": "+96.88",
+            "percent_change": "+0.16%"
+        },
+        {
+            "name": "Japanese Yen Currency Index",
+            "price": "64.08",
+            "change": "+0.01",
+            "percent_change": "+0.02%"
+        },
+        {
+            "name": "Australian Dollar Currency Index",
+            "price": "71.14",
+            "change": "+0.11",
+            "percent_change": "+0.15%"
         }
     ],
     "trending_stocks": [
@@ -197,6 +353,477 @@
             "price": "18.19",
             "change": "+0.42",
             "percent_change": "+2.36%"
+        },
+        {
+            "symbol": "TSLA",
+            "name": "Tesla, Inc.",
+            "price": "402.51",
+            "change": "-6.07",
+            "percent_change": "-1.49%"
+        },
+        {
+            "symbol": "SOUN",
+            "name": "SoundHound AI, Inc.",
+            "price": "8.60",
+            "change": "-0.38",
+            "percent_change": "-4.23%"
+        },
+        {
+            "symbol": "PLTR",
+            "name": "Palantir Technologies Inc.",
+            "price": "137.19",
+            "change": "+1.25",
+            "percent_change": "+0.92%"
+        },
+        {
+            "symbol": "BAC",
+            "name": "Bank of America Corporation",
+            "price": "49.83",
+            "change": "-2.47",
+            "percent_change": "-4.72%"
+        },
+        {
+            "symbol": "CPNG",
+            "name": "Coupang, Inc.",
+            "price": "19.08",
+            "change": "+0.37",
+            "percent_change": "+1.98%"
+        },
+        {
+            "symbol": "PATH",
+            "name": "UiPath, Inc.",
+            "price": "10.73",
+            "change": "+0.02",
+            "percent_change": "+0.19%"
+        },
+        {
+            "symbol": "BBD",
+            "name": "Banco Bradesco S.A.",
+            "price": "4.09",
+            "change": "+0.04",
+            "percent_change": "+0.99%"
+        },
+        {
+            "symbol": "OWL",
+            "name": "Blue Owl Capital Inc.",
+            "price": "10.55",
+            "change": "-0.67",
+            "percent_change": "-5.97%"
+        },
+        {
+            "symbol": "AMZN",
+            "name": "Amazon.com, Inc.",
+            "price": "210.00",
+            "change": "+2.08",
+            "percent_change": "+1.00%"
+        },
+        {
+            "symbol": "XYZ",
+            "name": "Block, Inc.",
+            "price": "63.70",
+            "change": "+9.17",
+            "percent_change": "+16.82%"
+        }
+    ],
+    "commodities": [
+        {
+            "name": "E-Mini S&P 500 Mar 26",
+            "price": "6,889.00",
+            "change": "-31.00",
+            "percent_change": "-0.45%"
+        },
+        {
+            "name": "Mini Dow Jones Indus.-$5 Mar 26",
+            "price": "49,000.00",
+            "change": "-531.00",
+            "percent_change": "-1.07%"
+        },
+        {
+            "name": "Nasdaq 100 Mar 26",
+            "price": "25,004.75",
+            "change": "-76.25",
+            "percent_change": "-0.30%"
+        },
+        {
+            "name": "E-mini Russell 2000 Index Futur",
+            "price": "2,634.70",
+            "change": "-45.90",
+            "percent_change": "-1.71%"
+        },
+        {
+            "name": "U.S. Treasury Bond Futures,Mar-",
+            "price": "118.47",
+            "change": "+0.59",
+            "percent_change": "+0.50%"
+        },
+        {
+            "name": "10-Year T-Note Futures,Mar-2026",
+            "price": "113.81",
+            "change": "+0.45",
+            "percent_change": "+0.40%"
+        },
+        {
+            "name": "5-Year T-Note Futures,Mar-2026",
+            "price": "110.14",
+            "change": "+0.32",
+            "percent_change": "+0.29%"
+        },
+        {
+            "name": "2-Year T-Note Futures,Mar-2026",
+            "price": "104.64",
+            "change": "+0.14",
+            "percent_change": "+0.13%"
+        },
+        {
+            "name": "Gold Apr 26",
+            "price": "5,247.90",
+            "change": "+53.70",
+            "percent_change": "+1.03%"
+        },
+        {
+            "name": "Micro Gold Futures,Apr-2026",
+            "price": "5,247.90",
+            "change": "+53.70",
+            "percent_change": "+1.03%"
+        },
+        {
+            "name": "Silver Mar 26",
+            "price": "93.29",
+            "change": "+5.71",
+            "percent_change": "+6.52%"
+        },
+        {
+            "name": "Micro Silver Futures,Mar-2026",
+            "price": "93.29",
+            "change": "+5.71",
+            "percent_change": "+6.52%"
+        },
+        {
+            "name": "Platinum Apr 26",
+            "price": "2,373.50",
+            "change": "+133.90",
+            "percent_change": "+5.98%"
+        },
+        {
+            "name": "Copper Mar 26",
+            "price": "6.06",
+            "change": "+0.05",
+            "percent_change": "+0.91%"
+        },
+        {
+            "name": "Palladium Mar 26",
+            "price": "1,828.50",
+            "change": "+40.00",
+            "percent_change": "+2.24%"
+        },
+        {
+            "name": "Crude Oil Apr 26",
+            "price": "67.02",
+            "change": "+1.81",
+            "percent_change": "+2.78%"
+        },
+        {
+            "name": "Heating Oil Apr 26",
+            "price": "2.5960",
+            "change": "+0.0702",
+            "percent_change": "+2.78%"
+        },
+        {
+            "name": "Natural Gas Apr 26",
+            "price": "2.8590",
+            "change": "+0.0320",
+            "percent_change": "+1.13%"
+        },
+        {
+            "name": "RBOB Gasoline Apr 26",
+            "price": "2.2855",
+            "change": "+0.0318",
+            "percent_change": "+1.41%"
+        },
+        {
+            "name": "Brent Crude Oil Last Day Financ",
+            "price": "72.87",
+            "change": "+2.03",
+            "percent_change": "+2.87%"
+        },
+        {
+            "name": "Mont Belvieu LDH Propane (OPIS)",
+            "price": "0.6737",
+            "change": "+0.0112",
+            "percent_change": "+1.70%"
+        },
+        {
+            "name": "Corn Futures,May-2026",
+            "price": "448.50",
+            "change": "+5.00",
+            "percent_change": "+1.13%"
+        },
+        {
+            "name": "Oat Futures,May-2026",
+            "price": "319.75",
+            "change": "+0.75",
+            "percent_change": "+0.24%"
+        },
+        {
+            "name": "KC HRW Wheat Futures,May-2026",
+            "price": "580.50",
+            "change": "+18.25",
+            "percent_change": "+3.25%"
+        },
+        {
+            "name": "USD/ZAR - NYCC - Mar26",
+            "price": "15.94",
+            "change": "+0.01",
+            "percent_change": "+0.07%"
+        },
+        {
+            "name": "Soybean Meal Futures,May-2026",
+            "price": "320.50",
+            "change": "-0.40",
+            "percent_change": "-0.12%"
+        },
+        {
+            "name": "Soybean Oil Futures,May-2026",
+            "price": "61.85",
+            "change": "+0.09",
+            "percent_change": "+0.15%"
+        },
+        {
+            "name": "Soybean Futures,May-2026",
+            "price": "1,170.75",
+            "change": "+7.25",
+            "percent_change": "+0.62%"
+        },
+        {
+            "name": "Feeder Cattle",
+            "price": "351.20",
+            "change": "-7.55",
+            "percent_change": "-2.10%"
+        },
+        {
+            "name": "Lean Hog Futures,Apr-2026",
+            "price": "95.62",
+            "change": "-0.10",
+            "percent_change": "-0.10%"
+        },
+        {
+            "name": "Live Cattle Futures,Apr-2026",
+            "price": "232.23",
+            "change": "-4.67",
+            "percent_change": "-1.97%"
+        },
+        {
+            "name": "Cocoa Mar 26",
+            "price": "3,027.00",
+            "change": "+229.00",
+            "percent_change": "+8.18%"
+        },
+        {
+            "name": "Coffee Mar 26",
+            "price": "284.90",
+            "change": "+0.30",
+            "percent_change": "+0.11%"
+        },
+        {
+            "name": "Cotton Mar 26",
+            "price": "65.64",
+            "change": "+0.28",
+            "percent_change": "+0.43%"
+        },
+        {
+            "name": "Random Length Lumber Futures",
+            "price": "380.60",
+            "change": "-4.30",
+            "percent_change": "-1.12%"
+        },
+        {
+            "name": "Orange Juice Jan 27",
+            "price": "170.00",
+            "change": "-15.80",
+            "percent_change": "-8.50%"
+        },
+        {
+            "name": "Sugar #11 Mar 26",
+            "price": "13.92",
+            "change": "+0.03",
+            "percent_change": "+0.22%"
+        }
+    ],
+    "cryptos": [
+        {
+            "symbol": "B BTC-USD",
+            "name": "Bitcoin USD",
+            "price": "66,362.83",
+            "change": "+2,222.77",
+            "percent_change": "+3.47%"
+        },
+        {
+            "symbol": "E ETH-USD",
+            "name": "Ethereum USD",
+            "price": "1,978.51",
+            "change": "+106.22",
+            "percent_change": "+5.67%"
+        },
+        {
+            "symbol": "U USDT-USD",
+            "name": "Tether USDt USD",
+            "price": "1.00",
+            "change": "-0.00",
+            "percent_change": "-0.01%"
+        },
+        {
+            "symbol": "B BNB-USD",
+            "name": "BNB USD",
+            "price": "621.18",
+            "change": "+24.99",
+            "percent_change": "+4.19%"
+        },
+        {
+            "symbol": "X XRP-USD",
+            "name": "XRP USD",
+            "price": "1.37",
+            "change": "+0.07",
+            "percent_change": "+5.03%"
+        },
+        {
+            "symbol": "U USDC-USD",
+            "name": "USD Coin USD",
+            "price": "1.00",
+            "change": "-0.00",
+            "percent_change": "-0.02%"
+        },
+        {
+            "symbol": "S SOL-USD",
+            "name": "Solana USD",
+            "price": "84.92",
+            "change": "+6.02",
+            "percent_change": "+7.64%"
+        },
+        {
+            "symbol": "T TRX-USD",
+            "name": "TRON USD",
+            "price": "0.28",
+            "change": "+0.00",
+            "percent_change": "+0.75%"
+        },
+        {
+            "symbol": "W WTRX-USD",
+            "name": "Wrapped TRON USD",
+            "price": "0.28",
+            "change": "+0.00",
+            "percent_change": "+0.84%"
+        },
+        {
+            "symbol": "S STETH-USD",
+            "name": "Lido Staked ETH USD",
+            "price": "1,976.01",
+            "change": "+109.60",
+            "percent_change": "+5.87%"
+        },
+        {
+            "symbol": "D DOGE-USD",
+            "name": "Dogecoin USD",
+            "price": "0.09",
+            "change": "+0.00",
+            "percent_change": "+3.82%"
+        },
+        {
+            "symbol": "U USDS33039-USD",
+            "name": "USDS USD",
+            "price": "1.00",
+            "change": "-0.00",
+            "percent_change": "-0.03%"
+        },
+        {
+            "symbol": "A ADA-USD",
+            "name": "Cardano USD",
+            "price": "0.28",
+            "change": "+0.01",
+            "percent_change": "+4.54%"
+        },
+        {
+            "symbol": "B BCH-USD",
+            "name": "Bitcoin Cash USD",
+            "price": "446.51",
+            "change": "+3.86",
+            "percent_change": "+0.87%"
+        },
+        {
+            "symbol": "W WSTETH-USD",
+            "name": "Lido wstETH USD",
+            "price": "2,426.74",
+            "change": "+136.21",
+            "percent_change": "+5.95%"
+        },
+        {
+            "symbol": "L LEO-USD",
+            "name": "UNUS SED LEO USD",
+            "price": "9.01",
+            "change": "+0.19",
+            "percent_change": "+2.19%"
+        },
+        {
+            "symbol": "W WBTC-USD",
+            "name": "Wrapped Bitcoin USD",
+            "price": "66,225.81",
+            "change": "+2,332.98",
+            "percent_change": "+3.65%"
+        },
+        {
+            "symbol": "H HYPE32196-USD",
+            "name": "Hyperliquid USD",
+            "price": "30.78",
+            "change": "+3.56",
+            "percent_change": "+13.09%"
+        },
+        {
+            "symbol": "W WBETH-USD",
+            "name": "Wrapped Beacon ETH USD",
+            "price": "2,156.77",
+            "change": "+115.07",
+            "percent_change": "+5.64%"
+        },
+        {
+            "symbol": "W WETH-USD",
+            "name": "WETH USD",
+            "price": "1,978.91",
+            "change": "+109.56",
+            "percent_change": "+5.86%"
+        },
+        {
+            "symbol": "X XMR-USD",
+            "name": "Monero USD",
+            "price": "342.87",
+            "change": "+15.11",
+            "percent_change": "+4.61%"
+        },
+        {
+            "symbol": "C CC37263-USD",
+            "name": "Canton USD",
+            "price": "0.16",
+            "change": "+0.00",
+            "percent_change": "+2.15%"
+        },
+        {
+            "symbol": "L LINK-USD",
+            "name": "Chainlink USD",
+            "price": "8.82",
+            "change": "+0.49",
+            "percent_change": "+5.89%"
+        },
+        {
+            "symbol": "U USDE29470-USD",
+            "name": "Ethena USDe USD",
+            "price": "1.00",
+            "change": "-0.00",
+            "percent_change": "-0.01%"
+        },
+        {
+            "symbol": "W WEETH-USD",
+            "name": "Wrapped eETH USD",
+            "price": "2,153.83",
+            "change": "+119.99",
+            "percent_change": "+5.90%"
         }
     ],
     "reddit_categorized": {
@@ -204,87 +831,73 @@
             {
                 "subreddit": "stocks",
                 "title": "‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran",
-                "score": 2023,
-                "num_comments": 452,
+                "score": 2026,
+                "num_comments": 450,
                 "url": "https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/"
             },
             {
                 "subreddit": "stocks",
-                "title": "Berkshire Hathaway releases Q4 earnings. Operating earnings down 30%",
-                "score": 585,
-                "num_comments": 73,
-                "url": "https://www.reddit.com/r/stocks/comments/1rh42w4/berkshire_hathaway_releases_q4_earnings_operating/"
-            },
-            {
-                "subreddit": "stocks",
                 "title": "Market moves due to attacks on Iran?",
-                "score": 240,
-                "num_comments": 338,
+                "score": 245,
+                "num_comments": 340,
                 "url": "https://www.reddit.com/r/stocks/comments/1rhd3ej/market_moves_due_to_attacks_on_iran/"
             },
             {
                 "subreddit": "stocks",
                 "title": "$100 oil? Prolonged Hormuz closure could spark a 1970s-style energy shock",
-                "score": 121,
-                "num_comments": 44,
+                "score": 144,
+                "num_comments": 53,
                 "url": "https://www.reddit.com/r/stocks/comments/1rhv6dt/100_oil_prolonged_hormuz_closure_could_spark_a/"
-            },
-            {
-                "subreddit": "pennystocks",
-                "title": "RIME: The $9M Reverse Split Dumpster Fire - A DD on How to Torch Shareholder Value in 12 Easy Steps",
-                "score": 80,
-                "num_comments": 19,
-                "url": "https://www.reddit.com/r/pennystocks/comments/1rgbm20/rime_the_9m_reverse_split_dumpster_fire_a_dd_on/"
             },
             {
                 "subreddit": "stocks",
                 "title": "Modi inaugurates Micron facility; hails India’s entry into global semiconductor chain",
-                "score": 48,
+                "score": 54,
                 "num_comments": 12,
                 "url": "https://www.reddit.com/r/stocks/comments/1rhqi0e/modi_inaugurates_micron_facility_hails_indias/"
+            },
+            {
+                "subreddit": "pennystocks",
+                "title": "The Lounge",
+                "score": 25,
+                "num_comments": 104,
+                "url": "https://www.reddit.com/r/pennystocks/comments/1rgtpwr/the_lounge/"
             }
         ],
         "market": [
             {
                 "subreddit": "wallstreetbets",
                 "title": "We’re so back",
-                "score": 51423,
-                "num_comments": 575,
+                "score": 51629,
+                "num_comments": 576,
                 "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/"
             },
             {
                 "subreddit": "wallstreetbets",
                 "title": "Red light therapy is key. Practice for Monday.",
-                "score": 8844,
-                "num_comments": 272,
+                "score": 9103,
+                "num_comments": 278,
                 "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/"
             },
             {
                 "subreddit": "wallstreetbets",
-                "title": "Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says",
-                "score": 3776,
-                "num_comments": 352,
-                "url": "https://www.reddit.com/r/wallstreetbets/comments/1rh6hgh/irans_revolutionary_guards_tell_ships_passage/"
-            },
-            {
-                "subreddit": "wallstreetbets",
                 "title": "Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?",
-                "score": 2678,
-                "num_comments": 1246,
+                "score": 2728,
+                "num_comments": 1258,
                 "url": "https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/"
             },
             {
                 "subreddit": "investing",
                 "title": "We Are In Black Swan Territory",
-                "score": 1800,
+                "score": 1802,
                 "num_comments": 366,
                 "url": "https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/"
             },
             {
                 "subreddit": "wallstreetbets",
                 "title": "I'm toast bois. Gonna sell all my shit and Walk The Earth",
-                "score": 1166,
-                "num_comments": 325,
+                "score": 1255,
+                "num_comments": 331,
                 "url": "https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/"
             }
         ],
@@ -292,88 +905,259 @@
             {
                 "subreddit": "technology",
                 "title": "\"Cancel ChatGPT\" movement goes big after OpenAI's latest move",
-                "score": 65117,
-                "num_comments": 2196,
+                "score": 65338,
+                "num_comments": 2201,
                 "url": "https://www.reddit.com/r/technology/comments/1rh882s/cancel_chatgpt_movement_goes_big_after_openais/"
             },
             {
                 "subreddit": "technology",
                 "title": "Claude hits No. 1 on App Store as ChatGPT users defect in show of support for Anthropic's Pentagon stance",
-                "score": 20626,
-                "num_comments": 758,
+                "score": 21641,
+                "num_comments": 790,
                 "url": "https://www.reddit.com/r/technology/comments/1rhoi54/claude_hits_no_1_on_app_store_as_chatgpt_users/"
             },
             {
                 "subreddit": "technology",
                 "title": "Anthropic's Claude hits No. 2 on Apple's top free apps list after Pentagon rejection",
-                "score": 19491,
+                "score": 19534,
                 "num_comments": 508,
                 "url": "https://www.reddit.com/r/technology/comments/1rhawy0/anthropics_claude_hits_no_2_on_apples_top_free/"
             },
             {
                 "subreddit": "technology",
-                "title": "YouTube Shorts and Instagram Reels are making you dumber, according to science",
-                "score": 17296,
-                "num_comments": 719,
-                "url": "https://www.reddit.com/r/technology/comments/1rh17h9/youtube_shorts_and_instagram_reels_are_making_you/"
-            },
-            {
-                "subreddit": "technology",
-                "title": "Polymarket defends its decision to allow betting on war as ‘invaluable’ / Everything is gambling now, even human suffering.",
-                "score": 4565,
-                "num_comments": 227,
-                "url": "https://www.reddit.com/r/technology/comments/1rhdn1m/polymarket_defends_its_decision_to_allow_betting/"
-            },
-            {
-                "subreddit": "technology",
                 "title": "Lawmakers Demand DHS Define ‘Domestic Terrorist’ As It Uses Vast Array of Surveillance Tools | Rep. Bennie G. Thompson and other Democrats made the demand in a letter to DHS Kristi Noem. “Your actions are abhorrent, blatantly unconstitutional, and corrosive to the functioning of a peaceful society.”",
-                "score": 1831,
+                "score": 1866,
                 "num_comments": 33,
                 "url": "https://www.reddit.com/r/technology/comments/1rhlk6v/lawmakers_demand_dhs_define_domestic_terrorist_as/"
+            },
+            {
+                "subreddit": "technology",
+                "title": "Goodbye, Tesla-style giant touchscreens: cars return to physical buttons",
+                "score": 1808,
+                "num_comments": 186,
+                "url": "https://www.reddit.com/r/technology/comments/1rhwdfx/goodbye_teslastyle_giant_touchscreens_cars_return/"
             }
         ],
         "economy": [
             {
                 "subreddit": "economics",
                 "title": "'Doomsday' report leaves experts rattled about increasing likelihood of US economy shake-up: 'The system wasn't designed for a crisis like this'",
-                "score": 3214,
-                "num_comments": 291,
+                "score": 3259,
+                "num_comments": 295,
                 "url": "https://www.reddit.com/r/Economics/comments/1rhej72/doomsday_report_leaves_experts_rattled_about/"
             },
             {
                 "subreddit": "economy",
                 "title": "A Reminder",
-                "score": 1253,
-                "num_comments": 11,
+                "score": 1273,
+                "num_comments": 12,
                 "url": "https://www.reddit.com/r/economy/comments/1rhl0wz/a_reminder/"
-            },
-            {
-                "subreddit": "economics",
-                "title": "Oil shipments paused as Iran closes Strait of Hormuz in response to US strikes",
-                "score": 732,
-                "num_comments": 148,
-                "url": "https://www.reddit.com/r/Economics/comments/1rhca8m/oil_shipments_paused_as_iran_closes_strait_of/"
             },
             {
                 "subreddit": "economy",
                 "title": "More people are moving out of the U.S. than moving in for the first time since the Great Depression—a bad omen for the $38.8 trillion national debt | In just one year, the Trump administration’s highly visible crusade against immigration has brought new entries into the U.S. to a grinding halt.",
-                "score": 331,
+                "score": 333,
                 "num_comments": 51,
                 "url": "https://www.reddit.com/r/economy/comments/1rhgi6r/more_people_are_moving_out_of_the_us_than_moving/"
             },
             {
                 "subreddit": "economics",
-                "title": "How the attack on Iran could impact the global oil market and economy",
-                "score": 270,
-                "num_comments": 68,
-                "url": "https://www.reddit.com/r/Economics/comments/1rhh4va/how_the_attack_on_iran_could_impact_the_global/"
+                "title": "Factories Can Come Back to the US. Jobs, Not So Much",
+                "score": 218,
+                "num_comments": 29,
+                "url": "https://www.reddit.com/r/Economics/comments/1rhn2sc/factories_can_come_back_to_the_us_jobs_not_so_much/"
             },
             {
                 "subreddit": "economy",
-                "title": "Americans Who Can’t Afford Beef ‘Have So Many Proteins to Choose From,’ Says US Sen. Cindy Hyde-Smith",
-                "score": 219,
-                "num_comments": 87,
-                "url": "https://www.reddit.com/r/economy/comments/1rhgzpz/americans_who_cant_afford_beef_have_so_many/"
+                "title": "50 years of trickle down...",
+                "score": 186,
+                "num_comments": 54,
+                "url": "https://www.reddit.com/r/economy/comments/1rhpbsv/50_years_of_trickle_down/"
+            }
+        ],
+        "crypto": [
+            {
+                "subreddit": "CryptoCurrency",
+                "title": "Suspected insiders make over $1.2 million on Polymarket ahead of U.S. strike on Iran",
+                "score": 1440,
+                "num_comments": 94,
+                "url": "https://www.reddit.com/r/CryptoCurrency/comments/1rh4od2/suspected_insiders_make_over_12_million_on/"
+            },
+            {
+                "subreddit": "CryptoCurrency",
+                "title": "Polymarket Iran Bets Hit $529 Million as New Wallets Raise Insider Concerns",
+                "score": 508,
+                "num_comments": 73,
+                "url": "https://www.reddit.com/r/CryptoCurrency/comments/1rhgjui/polymarket_iran_bets_hit_529_million_as_new/"
+            },
+            {
+                "subreddit": "Bitcoin",
+                "title": "Banks are going so hard on Bitcoin it's unbelievable. They know they missed on the first 20 million coins, they're ready to fight over the final million. HODL your bitcoin in your wallets, plebs. They're after your sats too.",
+                "score": 496,
+                "num_comments": 64,
+                "url": "https://www.reddit.com/r/Bitcoin/comments/1rhd4rz/banks_are_going_so_hard_on_bitcoin_its/"
+            },
+            {
+                "subreddit": "CryptoCurrency",
+                "title": "Bitcoin Price Jumps to $67K After Reports That Iran’s Supreme Leader Was Killed",
+                "score": 241,
+                "num_comments": 50,
+                "url": "https://www.reddit.com/r/CryptoCurrency/comments/1rhdodu/bitcoin_price_jumps_to_67k_after_reports_that/"
+            },
+            {
+                "subreddit": "CryptoCurrency",
+                "title": "Vitalik Buterin Lays Out A Plan To Make Ethereum 1,000 Times More Capable",
+                "score": 220,
+                "num_comments": 32,
+                "url": "https://www.reddit.com/r/CryptoCurrency/comments/1rhdknw/vitalik_buterin_lays_out_a_plan_to_make_ethereum/"
+            }
+        ],
+        "ai": [
+            {
+                "subreddit": "ChatGPT",
+                "title": "Cancel your ChatGPT Plus, burn their compute on the way out, and switch to Claude",
+                "score": 18495,
+                "num_comments": 1279,
+                "url": "https://www.reddit.com/r/ChatGPT/comments/1rh60py/cancel_your_chatgpt_plus_burn_their_compute_on/"
+            },
+            {
+                "subreddit": "Singularity",
+                "title": "Cancel your Chatgpt subscriptions and pick up a Claude subscription.",
+                "score": 6416,
+                "num_comments": 590,
+                "url": "https://www.reddit.com/r/singularity/comments/1rh9mzg/cancel_your_chatgpt_subscriptions_and_pick_up_a/"
+            },
+            {
+                "subreddit": "ChatGPT",
+                "title": "Claude has overtaken ChatGPT in the Apple App Store",
+                "score": 5701,
+                "num_comments": 232,
+                "url": "https://www.reddit.com/r/ChatGPT/comments/1rhh9p2/claude_has_overtaken_chatgpt_in_the_apple_app/"
+            },
+            {
+                "subreddit": "ChatGPT",
+                "title": "\"Cancel ChatGPT\" movement goes big after OpenAI's latest move",
+                "score": 3490,
+                "num_comments": 184,
+                "url": "https://www.reddit.com/r/ChatGPT/comments/1rhbjl2/cancel_chatgpt_movement_goes_big_after_openais/"
+            },
+            {
+                "subreddit": "Singularity",
+                "title": "\"Cancel ChatGPT\" movement goes mainstream after OpenAI closes deal with U.S. Department of War — as Anthropic refuses to surveil American citizens",
+                "score": 3341,
+                "num_comments": 193,
+                "url": "https://www.reddit.com/r/singularity/comments/1rha8ph/cancel_chatgpt_movement_goes_mainstream_after/"
+            }
+        ],
+        "finance": [
+            {
+                "subreddit": "FIRE",
+                "title": "24F. Not going into detail about it but I just inherited $4.5M Roth account. What would you do if you were me?",
+                "score": 1214,
+                "num_comments": 644,
+                "url": "https://www.reddit.com/r/Fire/comments/1rhfihf/24f_not_going_into_detail_about_it_but_i_just/"
+            },
+            {
+                "subreddit": "FIRE",
+                "title": "Hit 100k FIRE at 34🍾",
+                "score": 676,
+                "num_comments": 98,
+                "url": "https://www.reddit.com/r/Fire/comments/1rhase2/hit_100k_fire_at_34/"
+            },
+            {
+                "subreddit": "personalfinance",
+                "title": "employer paying through Zelle - is this an issue?",
+                "score": 497,
+                "num_comments": 169,
+                "url": "https://www.reddit.com/r/personalfinance/comments/1rh97uf/employer_paying_through_zelle_is_this_an_issue/"
+            },
+            {
+                "subreddit": "financialindependence",
+                "title": "New advisor short circuited about FIRE",
+                "score": 316,
+                "num_comments": 63,
+                "url": "https://www.reddit.com/r/financialindependence/comments/1rh8pdp/new_advisor_short_circuited_about_fire/"
+            },
+            {
+                "subreddit": "personalfinance",
+                "title": "How long is it financially smart to keep a old car for?",
+                "score": 208,
+                "num_comments": 317,
+                "url": "https://www.reddit.com/r/personalfinance/comments/1rhdftl/how_long_is_it_financially_smart_to_keep_a_old/"
+            }
+        ],
+        "dividends": [
+            {
+                "subreddit": "dividends",
+                "title": "Well it’s a start",
+                "score": 149,
+                "num_comments": 29,
+                "url": "https://www.reddit.com/r/dividends/comments/1rhg5ao/well_its_a_start/"
+            },
+            {
+                "subreddit": "dividends",
+                "title": "If you had 1M+ what income producing stocks(s) would you choose?",
+                "score": 117,
+                "num_comments": 110,
+                "url": "https://www.reddit.com/r/dividends/comments/1rhkoa0/if_you_had_1m_what_income_producing_stockss_would/"
+            },
+            {
+                "subreddit": "dividends",
+                "title": "4 months of QQQI + wheels options",
+                "score": 41,
+                "num_comments": 8,
+                "url": "https://www.reddit.com/r/dividends/comments/1rhnuaw/4_months_of_qqqi_wheels_options/"
+            },
+            {
+                "subreddit": "dividends",
+                "title": "SouthState Bank 2.4 3.3",
+                "score": 2,
+                "num_comments": 2,
+                "url": "https://www.reddit.com/r/dividends/comments/1rhuabc/southstate_bank_24_33/"
+            },
+            {
+                "subreddit": "yieldmax",
+                "title": "How I Minimized Mistakes in My DeFi Investing",
+                "score": 1,
+                "num_comments": 0,
+                "url": "https://www.reddit.com/r/Yieldmax/comments/1qlks87/how_i_minimized_mistakes_in_my_defi_investing/"
+            }
+        ],
+        "options": [
+            {
+                "subreddit": "Daytrading",
+                "title": "I accidentally discovered something about fast scalps on NQ and now I don’t know if it’s skill or luck",
+                "score": 194,
+                "num_comments": 103,
+                "url": "https://www.reddit.com/r/Daytrading/comments/1rhc0ob/i_accidentally_discovered_something_about_fast/"
+            },
+            {
+                "subreddit": "Daytrading",
+                "title": "First Month Live Trading with MES Futures (5ORB)",
+                "score": 112,
+                "num_comments": 32,
+                "url": "https://www.reddit.com/r/Daytrading/comments/1rhg8s5/first_month_live_trading_with_mes_futures_5orb/"
+            },
+            {
+                "subreddit": "options",
+                "title": "Trading options are boring",
+                "score": 65,
+                "num_comments": 130,
+                "url": "https://www.reddit.com/r/options/comments/1rgxjj3/trading_options_are_boring/"
+            },
+            {
+                "subreddit": "thetagang",
+                "title": "How's everyone's 2026 going?",
+                "score": 53,
+                "num_comments": 34,
+                "url": "https://www.reddit.com/r/thetagang/comments/1rh723s/hows_everyones_2026_going/"
+            },
+            {
+                "subreddit": "Daytrading",
+                "title": "Notice how the most potent price regime shifting news is on the weekends? It's almost like we're following a script.",
+                "score": 25,
+                "num_comments": 17,
+                "url": "https://www.reddit.com/r/Daytrading/comments/1rhq9yn/notice_how_the_most_potent_price_regime_shifting/"
             }
         ]
     }

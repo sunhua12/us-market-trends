@@ -24,6 +24,15 @@ def generate_dashboard(data_path, template_path, output_path):
 
     template = Template(template_str)
     
+    # Pre-calculate engagement scores for the chart
+    reddit_data = data.get("reddit_categorized", {})
+    categories = ['stocks', 'market', 'tech', 'economy', 'crypto', 'ai', 'finance', 'dividends', 'options']
+    engagement_scores = []
+    for cat in categories:
+        posts = reddit_data.get(cat, [])
+        total_score = sum(post.get('score', 0) for post in posts)
+        engagement_scores.append(total_score)
+    
     # Format timestamp for display
     ts = datetime.fromisoformat(data['timestamp']).strftime('%Y-%m-%d %H:%M:%S')
     
@@ -31,7 +40,10 @@ def generate_dashboard(data_path, template_path, output_path):
         "TIMESTAMP": ts,
         "indices": data.get("indices", []),
         "trending_stocks": data.get("trending_stocks", []),
-        "reddit_categorized": data.get("reddit_categorized", {})
+        "commodities": data.get("commodities", []),
+        "cryptos": data.get("cryptos", []),
+        "reddit_categorized": reddit_data,
+        "engagement_scores": engagement_scores
     }
 
     try:

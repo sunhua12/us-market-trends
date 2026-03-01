@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit Market Intelligence</title>
+    <title>Market Intelligence Terminal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,352 +16,792 @@
             --negative: #ef4444;
             --text-main: #f1f5f9;
             --text-dim: #94a3b8;
-            --stocks: #6366f1;
-            --market: #10b981;
-            --tech: #f59e0b;
-            --economy: #ec4899;
+            --stocks: #6366f1; --market: #10b981; --tech: #f59e0b;
+            --economy: #ec4899; --crypto: #8b5cf6; --ai: #06b6d4;
+            --finance: #14b8a6; --dividends: #f43f5e; --options: #fb923c;
         }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; }
-        .dashboard-container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .dashboard-container { max-width: 1600px; margin: 0 auto; padding: 30px 20px; }
+        
         .glass-card { 
             background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); 
             border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
-            margin-bottom: 24px; transition: transform 0.2s;
+            height: 100%; display: flex; flex-direction: column;
         }
-        .glass-card:hover { transform: translateY(-5px); }
-        .section-header { 
-            font-size: 0.9rem; font-weight: 700; text-transform: uppercase; 
-            letter-spacing: 2px; margin-bottom: 20px; display: flex; align-items: center;
+
+        .main-section-title {
+            font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 25px;
+            display: flex; align-items: center; gap: 12px;
         }
-        .section-header::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-left: 15px; }
+        .main-section-title::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, rgba(56,189,248,0.3), transparent); }
         
-        .cat-stocks { color: var(--stocks); }
-        .cat-market { color: var(--market); }
-        .cat-tech { color: var(--tech); }
-        .cat-economy { color: var(--economy); }
+        .section-header { 
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; 
+            letter-spacing: 1.5px; margin-bottom: 12px; display: flex; align-items: center;
+        }
+        .section-header::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-left: 10px; }
 
-        .card-title { font-size: 1.1rem; font-weight: 600; color: var(--accent-blue); margin-bottom: 20px; }
-        .news-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 0; }
-        .news-item:last-child { border-bottom: none; }
-        .reddit-tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 8px; color: white; }
-        .tag-stocks { background: var(--stocks); }
-        .tag-market { background: var(--market); }
-        .tag-tech { background: var(--tech); }
-        .tag-economy { background: var(--economy); }
+        .ind-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px; padding: 12px; transition: all 0.2s;
+        }
+        .ind-name { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; margin-bottom: 4px; display: block; }
+        .ind-val { font-size: 1.1rem; font-weight: 700; display: block; }
+        .ind-pct { font-size: 0.75rem; font-weight: 600; }
 
-        .timestamp { color: var(--text-dim); font-size: 0.85rem; letter-spacing: 1px; }
-        a { text-decoration: none; color: inherit; transition: color 0.2s; }
-        a:hover { color: var(--accent-blue); }
-        .score-info { font-size: 0.8rem; color: var(--text-dim); }
+        .data-table { width: 100%; font-size: 0.85rem; border-collapse: separate; border-spacing: 0 8px; }
+        .data-table tr { background: rgba(255,255,255,0.02); }
+        .data-table td { padding: 10px; border: none; }
+        .data-table td:first-child { border-radius: 8px 0 0 8px; font-weight: 700; }
+        .data-table td:last-child { border-radius: 0 8px 8px 0; text-align: right; }
+        .val-up { color: var(--positive); }
+        .val-down { color: var(--negative); }
+
+        .post-card {
+            background: rgba(255,255,255,0.03); border-radius: 10px; padding: 12px;
+            margin-bottom: 10px; border-left: 3px solid transparent;
+            height: 85px; display: flex; flex-direction: column; justify-content: space-between;
+            transition: all 0.2s; cursor: pointer;
+        }
+        .post-card:hover { background: rgba(255,255,255,0.07); transform: translateX(3px); }
+        .post-title { 
+            font-size: 0.8rem; font-weight: 600; line-height: 1.3; color: #fff;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .post-meta { font-size: 0.65rem; color: var(--text-dim); display: flex; gap: 8px; }
+
+        .c-stocks { color: var(--stocks); } .c-market { color: var(--market); } .c-tech { color: var(--tech); }
+        .c-economy { color: var(--economy); } .c-crypto { color: var(--crypto); } .c-ai { color: var(--ai); }
+        .c-finance { color: var(--finance); } .c-dividends { color: var(--dividends); } .c-options { color: var(--options); }
+
+        .b-stocks { border-left-color: var(--stocks); } .b-market { border-left-color: var(--market); }
+        .b-tech { border-left-color: var(--tech); } .b-economy { border-left-color: var(--economy); }
+        .b-crypto { border-left-color: var(--crypto); } .b-ai { border-left-color: var(--ai); }
+        .b-finance { border-left-color: var(--finance); } .b-dividends { border-left-color: var(--dividends); }
+        .b-options { border-left-color: var(--options); }
+
+        .timestamp { color: var(--text-dim); font-size: 0.7rem; font-weight: 600; }
+        a { text-decoration: none; }
+        .card-title { font-size: 0.9rem; font-weight: 700; color: var(--accent-blue); margin-bottom: 15px; }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
-        <header class="d-flex justify-content-between align-items-end mb-5">
+        <header class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Reddit <span style="color:var(--accent-blue)">Market Pulse</span></h1>
-                <p class="text-dim mb-0">Categorized Social Intelligence Hub</p>
+                <h1 class="fw-bold h4 mb-0">Market <span style="color:var(--accent-blue)">Intelligence</span></h1>
+                <p class="text-dim small mb-0">Unified Terminal for Market & Social Data</p>
             </div>
             <div class="text-end">
-                <div class="timestamp">LAST SYNC</div>
-                <div class="fw-bold">2026-03-01 21:26:46</div>
+                <div class="timestamp">SYNCED: 2026-03-01 21:48:26</div>
             </div>
         </header>
 
-        <!-- MARKET SNAPSHOT (CHARTS) -->
-        <div class="row g-4 mb-5">
-            <div class="col-lg-8">
-                <div class="glass-card p-4 h-100">
-                    <div class="card-title">Top Active Stocks Performance</div>
-                    <div id="mainChart"></div>
+        <!-- SECTION 1: MARKET DASHBOARD -->
+        <div class="main-section-title">📊 Market Dashboard</div>
+        
+        <div class="row g-2 mb-4">
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">S&P 500</span>
+                    <span class="ind-val">6,878.88</span>
+                    <span class="ind-pct text-danger">-0.43%</span>
                 </div>
             </div>
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">Dow Jones Industrial Average</span>
+                    <span class="ind-val">48,977.92</span>
+                    <span class="ind-pct text-danger">-1.05%</span>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">NASDAQ Composite</span>
+                    <span class="ind-val">22,668.21</span>
+                    <span class="ind-pct text-danger">-0.92%</span>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">NYSE Composite Index</span>
+                    <span class="ind-val">23,494.44</span>
+                    <span class="ind-pct text-danger">-0.13%</span>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">NYSE American Composite Index</span>
+                    <span class="ind-val">8,761.14</span>
+                    <span class="ind-pct text-success">+0.52%</span>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="ind-card">
+                    <span class="ind-name">Cboe UK 100</span>
+                    <span class="ind-val">1,086.35</span>
+                    <span class="ind-pct text-success">+0.54%</span>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row g-3 mb-5">
+            <!-- Table 1: Stocks -->
             <div class="col-lg-4">
-                <div class="glass-card p-4 h-100">
-                    <div class="card-title">Indices Snapshot</div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">S&P 500</div>
-                        <div class="text-end">
-                            <div class="fw-bold">6,878.88</div>
-                            <small class="negative" style="font-size:0.75rem; color: #ef4444">
-                                -0.43%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">Dow Jones Industrial Average</div>
-                        <div class="text-end">
-                            <div class="fw-bold">48,977.92</div>
-                            <small class="negative" style="font-size:0.75rem; color: #ef4444">
-                                -1.05%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">NASDAQ Composite</div>
-                        <div class="text-end">
-                            <div class="fw-bold">22,668.21</div>
-                            <small class="negative" style="font-size:0.75rem; color: #ef4444">
-                                -0.92%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">NYSE Composite Index</div>
-                        <div class="text-end">
-                            <div class="fw-bold">23,494.44</div>
-                            <small class="negative" style="font-size:0.75rem; color: #ef4444">
-                                -0.13%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">NYSE American Composite Index</div>
-                        <div class="text-end">
-                            <div class="fw-bold">8,761.14</div>
-                            <small class="positive" style="font-size:0.75rem; color: #10b981">
-                                +0.52%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">Cboe UK 100</div>
-                        <div class="text-end">
-                            <div class="fw-bold">1,086.35</div>
-                            <small class="positive" style="font-size:0.75rem; color: #10b981">
-                                +0.54%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">Russell 2000 Index</div>
-                        <div class="text-end">
-                            <div class="fw-bold">2,632.36</div>
-                            <small class="negative" style="font-size:0.75rem; color: #ef4444">
-                                -1.68%
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="text-dim" style="font-size:0.9rem">CBOE Volatility Index</div>
-                        <div class="text-end">
-                            <div class="fw-bold">19.86</div>
-                            <small class="positive" style="font-size:0.75rem; color: #10b981">
-                                +6.60%
-                            </small>
-                        </div>
-                    </div>
-                    
+                <div class="glass-card p-3">
+                    <div class="card-title">🚀 Top Active Stocks</div>
+                    <table class="data-table">
+                        
+                        <tr>
+                            <td>NVDA</td>
+                            <td class="text-dim"><small>177.19</small></td>
+                            <td class="val-down">-4.16%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>NFLX</td>
+                            <td class="text-dim"><small>96.24</small></td>
+                            <td class="val-up">+13.75%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>SOFI</td>
+                            <td class="text-dim"><small>17.76</small></td>
+                            <td class="val-down">-7.02%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>PLUG</td>
+                            <td class="text-dim"><small>1.79</small></td>
+                            <td class="val-down">-6.28%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>NU</td>
+                            <td class="text-dim"><small>14.98</small></td>
+                            <td class="val-down">-0.53%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>MARA</td>
+                            <td class="text-dim"><small>8.94</small></td>
+                            <td class="val-up">+5.80%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>AAL</td>
+                            <td class="text-dim"><small>13.07</small></td>
+                            <td class="val-down">-6.24%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>PSKY</td>
+                            <td class="text-dim"><small>13.51</small></td>
+                            <td class="val-up">+20.84%</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <!-- Table 2: Commodities -->
+            <div class="col-lg-4">
+                <div class="glass-card p-3">
+                    <div class="card-title">🛡️ Economic Indicators</div>
+                    <table class="data-table">
+                        
+                        <tr>
+                            <td>E-Mini S&P 500 Mar 26</td>
+                            <td class="text-dim"><small>6,889.00</small></td>
+                            <td class="val-down">-0.45%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Mini Dow Jones Indus.-$5 Mar 26</td>
+                            <td class="text-dim"><small>49,000.00</small></td>
+                            <td class="val-down">-1.07%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Nasdaq 100 Mar 26</td>
+                            <td class="text-dim"><small>25,004.75</small></td>
+                            <td class="val-down">-0.30%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>E-mini Russell 2000 Index Futur</td>
+                            <td class="text-dim"><small>2,634.70</small></td>
+                            <td class="val-down">-1.71%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>U.S. Treasury Bond Futures,Mar-</td>
+                            <td class="text-dim"><small>118.47</small></td>
+                            <td class="val-up">+0.50%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>10-Year T-Note Futures,Mar-2026</td>
+                            <td class="text-dim"><small>113.81</small></td>
+                            <td class="val-up">+0.40%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>5-Year T-Note Futures,Mar-2026</td>
+                            <td class="text-dim"><small>110.14</small></td>
+                            <td class="val-up">+0.29%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>2-Year T-Note Futures,Mar-2026</td>
+                            <td class="text-dim"><small>104.64</small></td>
+                            <td class="val-up">+0.13%</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <!-- Table 3: Crypto -->
+            <div class="col-lg-4">
+                <div class="glass-card p-3">
+                    <div class="card-title">₿ Crypto Market</div>
+                    <table class="data-table">
+                        
+                        <tr>
+                            <td>B BTC-USD</td>
+                            <td class="text-dim"><small>66,362.83</small></td>
+                            <td class="val-up">+3.47%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>E ETH-USD</td>
+                            <td class="text-dim"><small>1,978.51</small></td>
+                            <td class="val-up">+5.67%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>U USDT-USD</td>
+                            <td class="text-dim"><small>1.00</small></td>
+                            <td class="val-down">-0.01%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>B BNB-USD</td>
+                            <td class="text-dim"><small>621.18</small></td>
+                            <td class="val-up">+4.19%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>X XRP-USD</td>
+                            <td class="text-dim"><small>1.37</small></td>
+                            <td class="val-up">+5.03%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>U USDC-USD</td>
+                            <td class="text-dim"><small>1.00</small></td>
+                            <td class="val-down">-0.02%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>S SOL-USD</td>
+                            <td class="text-dim"><small>84.92</small></td>
+                            <td class="val-up">+7.64%</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>T TRX-USD</td>
+                            <td class="text-dim"><small>0.28</small></td>
+                            <td class="val-up">+0.75%</td>
+                        </tr>
+                        
+                    </table>
                 </div>
             </div>
         </div>
 
-        <!-- REDDIT CATEGORIES -->
-        <div class="row g-4">
-            <!-- STOCKS -->
-            <div class="col-lg-6">
-                <div class="section-header cat-stocks">📈 Stocks Analysis</div>
-                <div class="glass-card p-4">
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/stocks</span>
-                        <a href="https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/" target="_blank" class="fw-medium">‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran</a>
-                        <div class="score-info mt-1">🚀 2023 • 💬 452</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/stocks</span>
-                        <a href="https://www.reddit.com/r/stocks/comments/1rh42w4/berkshire_hathaway_releases_q4_earnings_operating/" target="_blank" class="fw-medium">Berkshire Hathaway releases Q4 earnings. Operating earnings down 30%</a>
-                        <div class="score-info mt-1">🚀 585 • 💬 73</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/stocks</span>
-                        <a href="https://www.reddit.com/r/stocks/comments/1rhd3ej/market_moves_due_to_attacks_on_iran/" target="_blank" class="fw-medium">Market moves due to attacks on Iran?</a>
-                        <div class="score-info mt-1">🚀 240 • 💬 338</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/stocks</span>
-                        <a href="https://www.reddit.com/r/stocks/comments/1rhv6dt/100_oil_prolonged_hormuz_closure_could_spark_a/" target="_blank" class="fw-medium">$100 oil? Prolonged Hormuz closure could spark a 1970s-style energy shock</a>
-                        <div class="score-info mt-1">🚀 121 • 💬 44</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/pennystocks</span>
-                        <a href="https://www.reddit.com/r/pennystocks/comments/1rgbm20/rime_the_9m_reverse_split_dumpster_fire_a_dd_on/" target="_blank" class="fw-medium">RIME: The $9M Reverse Split Dumpster Fire - A DD on How to Torch Shareholder Value in 12 Easy Steps</a>
-                        <div class="score-info mt-1">🚀 80 • 💬 19</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-stocks">r/stocks</span>
-                        <a href="https://www.reddit.com/r/stocks/comments/1rhqi0e/modi_inaugurates_micron_facility_hails_indias/" target="_blank" class="fw-medium">Modi inaugurates Micron facility; hails India’s entry into global semiconductor chain</a>
-                        <div class="score-info mt-1">🚀 48 • 💬 12</div>
-                    </div>
-                    
-                </div>
-            </div>
+        <!-- SECTION 2: SOCIAL INTELLIGENCE -->
+        <div class="main-section-title">💬 Social Intelligence</div>
 
-            <!-- MARKET -->
-            <div class="col-lg-6">
-                <div class="section-header cat-market">⚖️ Market Sentiment</div>
-                <div class="glass-card p-4">
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/wallstreetbets</span>
-                        <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/" target="_blank" class="fw-medium">We’re so back</a>
-                        <div class="score-info mt-1">🚀 51423 • 💬 575</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/wallstreetbets</span>
-                        <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/" target="_blank" class="fw-medium">Red light therapy is key. Practice for Monday.</a>
-                        <div class="score-info mt-1">🚀 8844 • 💬 272</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/wallstreetbets</span>
-                        <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh6hgh/irans_revolutionary_guards_tell_ships_passage/" target="_blank" class="fw-medium">Iran's revolutionary guards tell ships passage through Strait of Hormuz 'not allowed', EU naval mission official says</a>
-                        <div class="score-info mt-1">🚀 3776 • 💬 352</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/wallstreetbets</span>
-                        <a href="https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/" target="_blank" class="fw-medium">Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?</a>
-                        <div class="score-info mt-1">🚀 2678 • 💬 1246</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/investing</span>
-                        <a href="https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/" target="_blank" class="fw-medium">We Are In Black Swan Territory</a>
-                        <div class="score-info mt-1">🚀 1800 • 💬 366</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-market">r/wallstreetbets</span>
-                        <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/" target="_blank" class="fw-medium">I'm toast bois. Gonna sell all my shit and Walk The Earth</a>
-                        <div class="score-info mt-1">🚀 1166 • 💬 325</div>
-                    </div>
-                    
-                </div>
-            </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            
 
-            <!-- TECH -->
-            <div class="col-lg-6">
-                <div class="section-header cat-tech">💻 Tech & Innovation</div>
-                <div class="glass-card p-4">
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-stocks">📈 Stocks</div>
                     
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rh882s/cancel_chatgpt_movement_goes_big_after_openais/" target="_blank" class="fw-medium">"Cancel ChatGPT" movement goes big after OpenAI's latest move</a>
-                        <div class="score-info mt-1">🚀 65117 • 💬 2196</div>
-                    </div>
+                    <a href="https://www.reddit.com/r/stocks/comments/1rh0u8r/bigger_ramifications_than_venezuela_markets_brace/" target="_blank" class="post-card b-stocks d-block">
+                        <span class="post-title">‘Bigger ramifications than Venezuela’: Markets brace for impact after U.S. strikes Iran</span>
+                        <div class="post-meta">
+                            <span>🚀 2026</span>
+                            <span>💬 450</span>
+                            <span>r/stocks</span>
+                        </div>
+                    </a>
                     
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rhoi54/claude_hits_no_1_on_app_store_as_chatgpt_users/" target="_blank" class="fw-medium">Claude hits No. 1 on App Store as ChatGPT users defect in show of support for Anthropic's Pentagon stance</a>
-                        <div class="score-info mt-1">🚀 20626 • 💬 758</div>
-                    </div>
+                    <a href="https://www.reddit.com/r/stocks/comments/1rhd3ej/market_moves_due_to_attacks_on_iran/" target="_blank" class="post-card b-stocks d-block">
+                        <span class="post-title">Market moves due to attacks on Iran?</span>
+                        <div class="post-meta">
+                            <span>🚀 245</span>
+                            <span>💬 340</span>
+                            <span>r/stocks</span>
+                        </div>
+                    </a>
                     
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rhawy0/anthropics_claude_hits_no_2_on_apples_top_free/" target="_blank" class="fw-medium">Anthropic's Claude hits No. 2 on Apple's top free apps list after Pentagon rejection</a>
-                        <div class="score-info mt-1">🚀 19491 • 💬 508</div>
-                    </div>
+                    <a href="https://www.reddit.com/r/stocks/comments/1rhv6dt/100_oil_prolonged_hormuz_closure_could_spark_a/" target="_blank" class="post-card b-stocks d-block">
+                        <span class="post-title">$100 oil? Prolonged Hormuz closure could spark a 1970s-style energy shock</span>
+                        <div class="post-meta">
+                            <span>🚀 144</span>
+                            <span>💬 53</span>
+                            <span>r/stocks</span>
+                        </div>
+                    </a>
                     
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rh17h9/youtube_shorts_and_instagram_reels_are_making_you/" target="_blank" class="fw-medium">YouTube Shorts and Instagram Reels are making you dumber, according to science</a>
-                        <div class="score-info mt-1">🚀 17296 • 💬 719</div>
-                    </div>
+                    <a href="https://www.reddit.com/r/stocks/comments/1rhqi0e/modi_inaugurates_micron_facility_hails_indias/" target="_blank" class="post-card b-stocks d-block">
+                        <span class="post-title">Modi inaugurates Micron facility; hails India’s entry into global semiconductor chain</span>
+                        <div class="post-meta">
+                            <span>🚀 54</span>
+                            <span>💬 12</span>
+                            <span>r/stocks</span>
+                        </div>
+                    </a>
                     
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rhdn1m/polymarket_defends_its_decision_to_allow_betting/" target="_blank" class="fw-medium">Polymarket defends its decision to allow betting on war as ‘invaluable’ / Everything is gambling now, even human suffering.</a>
-                        <div class="score-info mt-1">🚀 4565 • 💬 227</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-tech">r/technology</span>
-                        <a href="https://www.reddit.com/r/technology/comments/1rhlk6v/lawmakers_demand_dhs_define_domestic_terrorist_as/" target="_blank" class="fw-medium">Lawmakers Demand DHS Define ‘Domestic Terrorist’ As It Uses Vast Array of Surveillance Tools | Rep. Bennie G. Thompson and other Democrats made the demand in a letter to DHS Kristi Noem. “Your actions are abhorrent, blatantly unconstitutional, and corrosive to the functioning of a peaceful society.”</a>
-                        <div class="score-info mt-1">🚀 1831 • 💬 33</div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- ECONOMY -->
-            <div class="col-lg-6">
-                <div class="section-header cat-economy">🏛️ Global Economy</div>
-                <div class="glass-card p-4">
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economics</span>
-                        <a href="https://www.reddit.com/r/Economics/comments/1rhej72/doomsday_report_leaves_experts_rattled_about/" target="_blank" class="fw-medium">'Doomsday' report leaves experts rattled about increasing likelihood of US economy shake-up: 'The system wasn't designed for a crisis like this'</a>
-                        <div class="score-info mt-1">🚀 3214 • 💬 291</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economy</span>
-                        <a href="https://www.reddit.com/r/economy/comments/1rhl0wz/a_reminder/" target="_blank" class="fw-medium">A Reminder</a>
-                        <div class="score-info mt-1">🚀 1253 • 💬 11</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economics</span>
-                        <a href="https://www.reddit.com/r/Economics/comments/1rhca8m/oil_shipments_paused_as_iran_closes_strait_of/" target="_blank" class="fw-medium">Oil shipments paused as Iran closes Strait of Hormuz in response to US strikes</a>
-                        <div class="score-info mt-1">🚀 732 • 💬 148</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economy</span>
-                        <a href="https://www.reddit.com/r/economy/comments/1rhgi6r/more_people_are_moving_out_of_the_us_than_moving/" target="_blank" class="fw-medium">More people are moving out of the U.S. than moving in for the first time since the Great Depression—a bad omen for the $38.8 trillion national debt | In just one year, the Trump administration’s highly visible crusade against immigration has brought new entries into the U.S. to a grinding halt.</a>
-                        <div class="score-info mt-1">🚀 331 • 💬 51</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economics</span>
-                        <a href="https://www.reddit.com/r/Economics/comments/1rhh4va/how_the_attack_on_iran_could_impact_the_global/" target="_blank" class="fw-medium">How the attack on Iran could impact the global oil market and economy</a>
-                        <div class="score-info mt-1">🚀 270 • 💬 68</div>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="reddit-tag tag-economy">r/economy</span>
-                        <a href="https://www.reddit.com/r/economy/comments/1rhgzpz/americans_who_cant_afford_beef_have_so_many/" target="_blank" class="fw-medium">Americans Who Can’t Afford Beef ‘Have So Many Proteins to Choose From,’ Says US Sen. Cindy Hyde-Smith</a>
-                        <div class="score-info mt-1">🚀 219 • 💬 87</div>
-                    </div>
+                    <a href="https://www.reddit.com/r/pennystocks/comments/1rgtpwr/the_lounge/" target="_blank" class="post-card b-stocks d-block">
+                        <span class="post-title">The Lounge</span>
+                        <div class="post-meta">
+                            <span>🚀 25</span>
+                            <span>💬 104</span>
+                            <span>r/pennystocks</span>
+                        </div>
+                    </a>
                     
                 </div>
             </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-market">⚖️ Market</div>
+                    
+                    <a href="https://www.reddit.com/r/wallstreetbets/comments/1rh6sge/were_so_back/" target="_blank" class="post-card b-market d-block">
+                        <span class="post-title">We’re so back</span>
+                        <div class="post-meta">
+                            <span>🚀 51629</span>
+                            <span>💬 576</span>
+                            <span>r/wallstreetbets</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhluiq/red_light_therapy_is_key_practice_for_monday/" target="_blank" class="post-card b-market d-block">
+                        <span class="post-title">Red light therapy is key. Practice for Monday.</span>
+                        <div class="post-meta">
+                            <span>🚀 9103</span>
+                            <span>💬 278</span>
+                            <span>r/wallstreetbets</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/wallstreetbets/comments/1rheyza/market_reaction_if_iranian_leader_khamenei_was/" target="_blank" class="post-card b-market d-block">
+                        <span class="post-title">Market reaction if Iranian leader Khamenei was taken out in a strike and the ‘war’ was essentially over?</span>
+                        <div class="post-meta">
+                            <span>🚀 2728</span>
+                            <span>💬 1258</span>
+                            <span>r/wallstreetbets</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/investing/comments/1rgryhf/we_are_in_black_swan_territory/" target="_blank" class="post-card b-market d-block">
+                        <span class="post-title">We Are In Black Swan Territory</span>
+                        <div class="post-meta">
+                            <span>🚀 1802</span>
+                            <span>💬 366</span>
+                            <span>r/investing</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/wallstreetbets/comments/1rhnqrk/im_toast_bois_gonna_sell_all_my_shit_and_walk_the/" target="_blank" class="post-card b-market d-block">
+                        <span class="post-title">I'm toast bois. Gonna sell all my shit and Walk The Earth</span>
+                        <div class="post-meta">
+                            <span>🚀 1255</span>
+                            <span>💬 331</span>
+                            <span>r/wallstreetbets</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-tech">💻 Tech</div>
+                    
+                    <a href="https://www.reddit.com/r/technology/comments/1rh882s/cancel_chatgpt_movement_goes_big_after_openais/" target="_blank" class="post-card b-tech d-block">
+                        <span class="post-title">"Cancel ChatGPT" movement goes big after OpenAI's latest move</span>
+                        <div class="post-meta">
+                            <span>🚀 65338</span>
+                            <span>💬 2201</span>
+                            <span>r/technology</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/technology/comments/1rhoi54/claude_hits_no_1_on_app_store_as_chatgpt_users/" target="_blank" class="post-card b-tech d-block">
+                        <span class="post-title">Claude hits No. 1 on App Store as ChatGPT users defect in show of support for Anthropic's Pentagon stance</span>
+                        <div class="post-meta">
+                            <span>🚀 21641</span>
+                            <span>💬 790</span>
+                            <span>r/technology</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/technology/comments/1rhawy0/anthropics_claude_hits_no_2_on_apples_top_free/" target="_blank" class="post-card b-tech d-block">
+                        <span class="post-title">Anthropic's Claude hits No. 2 on Apple's top free apps list after Pentagon rejection</span>
+                        <div class="post-meta">
+                            <span>🚀 19534</span>
+                            <span>💬 508</span>
+                            <span>r/technology</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/technology/comments/1rhlk6v/lawmakers_demand_dhs_define_domestic_terrorist_as/" target="_blank" class="post-card b-tech d-block">
+                        <span class="post-title">Lawmakers Demand DHS Define ‘Domestic Terrorist’ As It Uses Vast Array of Surveillance Tools | Rep. Bennie G. Thompson and other Democrats made the demand in a letter to DHS Kristi Noem. “Your actions are abhorrent, blatantly unconstitutional, and corrosive to the functioning of a peaceful society.”</span>
+                        <div class="post-meta">
+                            <span>🚀 1866</span>
+                            <span>💬 33</span>
+                            <span>r/technology</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/technology/comments/1rhwdfx/goodbye_teslastyle_giant_touchscreens_cars_return/" target="_blank" class="post-card b-tech d-block">
+                        <span class="post-title">Goodbye, Tesla-style giant touchscreens: cars return to physical buttons</span>
+                        <div class="post-meta">
+                            <span>🚀 1808</span>
+                            <span>💬 186</span>
+                            <span>r/technology</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-economy">🏛️ Economy</div>
+                    
+                    <a href="https://www.reddit.com/r/Economics/comments/1rhej72/doomsday_report_leaves_experts_rattled_about/" target="_blank" class="post-card b-economy d-block">
+                        <span class="post-title">'Doomsday' report leaves experts rattled about increasing likelihood of US economy shake-up: 'The system wasn't designed for a crisis like this'</span>
+                        <div class="post-meta">
+                            <span>🚀 3259</span>
+                            <span>💬 295</span>
+                            <span>r/economics</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/economy/comments/1rhl0wz/a_reminder/" target="_blank" class="post-card b-economy d-block">
+                        <span class="post-title">A Reminder</span>
+                        <div class="post-meta">
+                            <span>🚀 1273</span>
+                            <span>💬 12</span>
+                            <span>r/economy</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/economy/comments/1rhgi6r/more_people_are_moving_out_of_the_us_than_moving/" target="_blank" class="post-card b-economy d-block">
+                        <span class="post-title">More people are moving out of the U.S. than moving in for the first time since the Great Depression—a bad omen for the $38.8 trillion national debt | In just one year, the Trump administration’s highly visible crusade against immigration has brought new entries into the U.S. to a grinding halt.</span>
+                        <div class="post-meta">
+                            <span>🚀 333</span>
+                            <span>💬 51</span>
+                            <span>r/economy</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Economics/comments/1rhn2sc/factories_can_come_back_to_the_us_jobs_not_so_much/" target="_blank" class="post-card b-economy d-block">
+                        <span class="post-title">Factories Can Come Back to the US. Jobs, Not So Much</span>
+                        <div class="post-meta">
+                            <span>🚀 218</span>
+                            <span>💬 29</span>
+                            <span>r/economics</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/economy/comments/1rhpbsv/50_years_of_trickle_down/" target="_blank" class="post-card b-economy d-block">
+                        <span class="post-title">50 years of trickle down...</span>
+                        <div class="post-meta">
+                            <span>🚀 186</span>
+                            <span>💬 54</span>
+                            <span>r/economy</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-crypto">₿ Crypto</div>
+                    
+                    <a href="https://www.reddit.com/r/CryptoCurrency/comments/1rh4od2/suspected_insiders_make_over_12_million_on/" target="_blank" class="post-card b-crypto d-block">
+                        <span class="post-title">Suspected insiders make over $1.2 million on Polymarket ahead of U.S. strike on Iran</span>
+                        <div class="post-meta">
+                            <span>🚀 1440</span>
+                            <span>💬 94</span>
+                            <span>r/CryptoCurrency</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/CryptoCurrency/comments/1rhgjui/polymarket_iran_bets_hit_529_million_as_new/" target="_blank" class="post-card b-crypto d-block">
+                        <span class="post-title">Polymarket Iran Bets Hit $529 Million as New Wallets Raise Insider Concerns</span>
+                        <div class="post-meta">
+                            <span>🚀 508</span>
+                            <span>💬 73</span>
+                            <span>r/CryptoCurrency</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Bitcoin/comments/1rhd4rz/banks_are_going_so_hard_on_bitcoin_its/" target="_blank" class="post-card b-crypto d-block">
+                        <span class="post-title">Banks are going so hard on Bitcoin it's unbelievable. They know they missed on the first 20 million coins, they're ready to fight over the final million. HODL your bitcoin in your wallets, plebs. They're after your sats too.</span>
+                        <div class="post-meta">
+                            <span>🚀 496</span>
+                            <span>💬 64</span>
+                            <span>r/Bitcoin</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/CryptoCurrency/comments/1rhdodu/bitcoin_price_jumps_to_67k_after_reports_that/" target="_blank" class="post-card b-crypto d-block">
+                        <span class="post-title">Bitcoin Price Jumps to $67K After Reports That Iran’s Supreme Leader Was Killed</span>
+                        <div class="post-meta">
+                            <span>🚀 241</span>
+                            <span>💬 50</span>
+                            <span>r/CryptoCurrency</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/CryptoCurrency/comments/1rhdknw/vitalik_buterin_lays_out_a_plan_to_make_ethereum/" target="_blank" class="post-card b-crypto d-block">
+                        <span class="post-title">Vitalik Buterin Lays Out A Plan To Make Ethereum 1,000 Times More Capable</span>
+                        <div class="post-meta">
+                            <span>🚀 220</span>
+                            <span>💬 32</span>
+                            <span>r/CryptoCurrency</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-ai">🤖 AI & Future</div>
+                    
+                    <a href="https://www.reddit.com/r/ChatGPT/comments/1rh60py/cancel_your_chatgpt_plus_burn_their_compute_on/" target="_blank" class="post-card b-ai d-block">
+                        <span class="post-title">Cancel your ChatGPT Plus, burn their compute on the way out, and switch to Claude</span>
+                        <div class="post-meta">
+                            <span>🚀 18495</span>
+                            <span>💬 1279</span>
+                            <span>r/ChatGPT</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/singularity/comments/1rh9mzg/cancel_your_chatgpt_subscriptions_and_pick_up_a/" target="_blank" class="post-card b-ai d-block">
+                        <span class="post-title">Cancel your Chatgpt subscriptions and pick up a Claude subscription.</span>
+                        <div class="post-meta">
+                            <span>🚀 6416</span>
+                            <span>💬 590</span>
+                            <span>r/Singularity</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/ChatGPT/comments/1rhh9p2/claude_has_overtaken_chatgpt_in_the_apple_app/" target="_blank" class="post-card b-ai d-block">
+                        <span class="post-title">Claude has overtaken ChatGPT in the Apple App Store</span>
+                        <div class="post-meta">
+                            <span>🚀 5701</span>
+                            <span>💬 232</span>
+                            <span>r/ChatGPT</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/ChatGPT/comments/1rhbjl2/cancel_chatgpt_movement_goes_big_after_openais/" target="_blank" class="post-card b-ai d-block">
+                        <span class="post-title">"Cancel ChatGPT" movement goes big after OpenAI's latest move</span>
+                        <div class="post-meta">
+                            <span>🚀 3490</span>
+                            <span>💬 184</span>
+                            <span>r/ChatGPT</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/singularity/comments/1rha8ph/cancel_chatgpt_movement_goes_mainstream_after/" target="_blank" class="post-card b-ai d-block">
+                        <span class="post-title">"Cancel ChatGPT" movement goes mainstream after OpenAI closes deal with U.S. Department of War — as Anthropic refuses to surveil American citizens</span>
+                        <div class="post-meta">
+                            <span>🚀 3341</span>
+                            <span>💬 193</span>
+                            <span>r/Singularity</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-finance">💰 Finance</div>
+                    
+                    <a href="https://www.reddit.com/r/Fire/comments/1rhfihf/24f_not_going_into_detail_about_it_but_i_just/" target="_blank" class="post-card b-finance d-block">
+                        <span class="post-title">24F. Not going into detail about it but I just inherited $4.5M Roth account. What would you do if you were me?</span>
+                        <div class="post-meta">
+                            <span>🚀 1214</span>
+                            <span>💬 644</span>
+                            <span>r/FIRE</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Fire/comments/1rhase2/hit_100k_fire_at_34/" target="_blank" class="post-card b-finance d-block">
+                        <span class="post-title">Hit 100k FIRE at 34🍾</span>
+                        <div class="post-meta">
+                            <span>🚀 676</span>
+                            <span>💬 98</span>
+                            <span>r/FIRE</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/personalfinance/comments/1rh97uf/employer_paying_through_zelle_is_this_an_issue/" target="_blank" class="post-card b-finance d-block">
+                        <span class="post-title">employer paying through Zelle - is this an issue?</span>
+                        <div class="post-meta">
+                            <span>🚀 497</span>
+                            <span>💬 169</span>
+                            <span>r/personalfinance</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/financialindependence/comments/1rh8pdp/new_advisor_short_circuited_about_fire/" target="_blank" class="post-card b-finance d-block">
+                        <span class="post-title">New advisor short circuited about FIRE</span>
+                        <div class="post-meta">
+                            <span>🚀 316</span>
+                            <span>💬 63</span>
+                            <span>r/financialindependence</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/personalfinance/comments/1rhdftl/how_long_is_it_financially_smart_to_keep_a_old/" target="_blank" class="post-card b-finance d-block">
+                        <span class="post-title">How long is it financially smart to keep a old car for?</span>
+                        <div class="post-meta">
+                            <span>🚀 208</span>
+                            <span>💬 317</span>
+                            <span>r/personalfinance</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-dividends">🍎 Dividends</div>
+                    
+                    <a href="https://www.reddit.com/r/dividends/comments/1rhg5ao/well_its_a_start/" target="_blank" class="post-card b-dividends d-block">
+                        <span class="post-title">Well it’s a start</span>
+                        <div class="post-meta">
+                            <span>🚀 149</span>
+                            <span>💬 29</span>
+                            <span>r/dividends</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/dividends/comments/1rhkoa0/if_you_had_1m_what_income_producing_stockss_would/" target="_blank" class="post-card b-dividends d-block">
+                        <span class="post-title">If you had 1M+ what income producing stocks(s) would you choose?</span>
+                        <div class="post-meta">
+                            <span>🚀 117</span>
+                            <span>💬 110</span>
+                            <span>r/dividends</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/dividends/comments/1rhnuaw/4_months_of_qqqi_wheels_options/" target="_blank" class="post-card b-dividends d-block">
+                        <span class="post-title">4 months of QQQI + wheels options</span>
+                        <div class="post-meta">
+                            <span>🚀 41</span>
+                            <span>💬 8</span>
+                            <span>r/dividends</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/dividends/comments/1rhuabc/southstate_bank_24_33/" target="_blank" class="post-card b-dividends d-block">
+                        <span class="post-title">SouthState Bank 2.4 3.3</span>
+                        <div class="post-meta">
+                            <span>🚀 2</span>
+                            <span>💬 2</span>
+                            <span>r/dividends</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Yieldmax/comments/1qlks87/how_i_minimized_mistakes_in_my_defi_investing/" target="_blank" class="post-card b-dividends d-block">
+                        <span class="post-title">How I Minimized Mistakes in My DeFi Investing</span>
+                        <div class="post-meta">
+                            <span>🚀 1</span>
+                            <span>💬 0</span>
+                            <span>r/yieldmax</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="glass-card p-3">
+                    <div class="section-header c-options">🎯 Options</div>
+                    
+                    <a href="https://www.reddit.com/r/Daytrading/comments/1rhc0ob/i_accidentally_discovered_something_about_fast/" target="_blank" class="post-card b-options d-block">
+                        <span class="post-title">I accidentally discovered something about fast scalps on NQ and now I don’t know if it’s skill or luck</span>
+                        <div class="post-meta">
+                            <span>🚀 194</span>
+                            <span>💬 103</span>
+                            <span>r/Daytrading</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Daytrading/comments/1rhg8s5/first_month_live_trading_with_mes_futures_5orb/" target="_blank" class="post-card b-options d-block">
+                        <span class="post-title">First Month Live Trading with MES Futures (5ORB)</span>
+                        <div class="post-meta">
+                            <span>🚀 112</span>
+                            <span>💬 32</span>
+                            <span>r/Daytrading</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/options/comments/1rgxjj3/trading_options_are_boring/" target="_blank" class="post-card b-options d-block">
+                        <span class="post-title">Trading options are boring</span>
+                        <div class="post-meta">
+                            <span>🚀 65</span>
+                            <span>💬 130</span>
+                            <span>r/options</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/thetagang/comments/1rh723s/hows_everyones_2026_going/" target="_blank" class="post-card b-options d-block">
+                        <span class="post-title">How's everyone's 2026 going?</span>
+                        <div class="post-meta">
+                            <span>🚀 53</span>
+                            <span>💬 34</span>
+                            <span>r/thetagang</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.reddit.com/r/Daytrading/comments/1rhq9yn/notice_how_the_most_potent_price_regime_shifting/" target="_blank" class="post-card b-options d-block">
+                        <span class="post-title">Notice how the most potent price regime shifting news is on the weekends? It's almost like we're following a script.</span>
+                        <div class="post-meta">
+                            <span>🚀 25</span>
+                            <span>💬 17</span>
+                            <span>r/Daytrading</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+            
         </div>
     </div>
-
-    <script>
-        const labels = ["NVDA","NFLX","SOFI","PLUG","NU","MARA","AAL","PSKY","ONDS","F","CRWV","INTC",];
-        const rawData = ["-4.16%","+13.75%","-7.02%","-6.28%","-0.53%","+5.80%","-6.24%","+20.84%","-3.54%","-2.22%","-18.51%","+0.33%",];
-        const data = rawData.map(val => parseFloat(val.replace('%', '')) || 0);
-
-        var options = {
-            series: [{ name: 'Change %', data: data }],
-            chart: { type: 'bar', height: 350, toolbar: { show: false }, background: 'transparent', foreColor: '#94a3b8' },
-            colors: [function({ value }) { return value > 0 ? '#10b981' : '#ef4444' }],
-            plotOptions: { bar: { borderRadius: 4, horizontal: false, columnWidth: '60%' } },
-            dataLabels: { enabled: false },
-            xaxis: { categories: labels, axisBorder: { show: false }, axisTicks: { show: false } },
-            yaxis: { labels: { formatter: (val) => val.toFixed(1) + '%' } },
-            grid: { borderColor: 'rgba(255,255,255,0.05)', strokeDashArray: 4 },
-            tooltip: { theme: 'dark' }
-        };
-
-        new ApexCharts(document.querySelector("#mainChart"), options).render();
-    </script>
 </body>
 </html>
